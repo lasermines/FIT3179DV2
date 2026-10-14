@@ -1,0 +1,157 @@
+breed,median_lifespan,ci_lower,ci_upper,sample_size,avg_weight_kg,min_weight_kg,max_weight_kg,size_category,min_height_cm,max_height_cm,breed_group,energy_level,grooming_frequency,trainability
+Crossbreed,12.0,12.0,12.1,183498,,,,Unknown,,,Crossbreed,,,
+Affenpinscher,9.3,7.4,10.8,542,3.86,3.18,4.54,Small (<10 kg),22.86,29.21,Toy Group,Regular Exercise,2-3 Times a Week Brushing,Easy Training
+Afghan Hound,11.1,10.5,11.8,618,24.95,22.68,27.22,Medium (10-25 kg),63.5,68.58,Hound Group,Energetic,Daily Brushing,May be Stubborn
+Airedale Terrier,12.0,11.8,12.3,1826,27.21,22.68,31.75,Large (25-45 kg),58.42,58.42,Terrier Group,Regular Exercise,2-3 Times a Week Brushing,Eager to Please
+Akita,11.4,11.1,11.6,6186,45.36,31.75,58.97,Giant (>45 kg),60.96,71.12,Working Group,Energetic,Daily Brushing,Eager to Please
+Alaskan Malamute,11.3,11.1,11.8,2822,36.29,34.02,38.56,Large (25-45 kg),58.42,63.5,Working Group,Energetic,2-3 Times a Week Brushing,Independent
+American Cocker Spaniel,13.3,13.0,13.7,950,,,,Unknown,,,Other,,,
+American Eskimo Dog,11.3,10.0,12.0,58,9.3,2.72,15.88,Small (<10 kg),22.86,48.26,Non-Sporting Group,Energetic,Weekly Brushing,Eager to Please
+American Staffordshire Terrier,12.5,11.4,13.1,236,24.95,18.14,31.75,Medium (10-25 kg),43.18,48.26,Terrier Group,Regular Exercise,Occasional Bath/Brush,Agreeable
+Anatolian Shepherd,10.1,7.6,11.2,110,52.17,36.29,68.04,Giant (>45 kg),68.58,73.66,Working Group,Regular Exercise,Weekly Brushing,Independent
+Australian Cattle Dog,14.0,13.2,15.1,167,19.28,15.88,22.68,Medium (10-25 kg),43.18,50.8,Herding Group,Needs Lots of Activity,Occasional Bath/Brush,May be Stubborn
+Australian Shepherd,13.7,12.8,14.6,286,23.81,18.14,29.48,Medium (10-25 kg),45.72,58.42,Herding Group,Energetic,Weekly Brushing,Eager to Please
+Basenji,12.1,11.3,15.8,122,10.44,9.98,10.89,Medium (10-25 kg),40.64,43.18,Hound Group,Energetic,Occasional Bath/Brush,Independent
+Basset Hound,12.5,12.2,12.7,2896,23.81,18.14,29.48,Medium (10-25 kg),38.1,38.1,Hound Group,Couch Potato,2-3 Times a Week Brushing,Independent
+Beagle,12.5,12.3,12.7,6230,9.75,5.9,13.61,Small (<10 kg),33.02,38.1,Hound Group,Energetic,2-3 Times a Week Brushing,Agreeable
+Bearded Collie,13.9,13.7,14.0,1735,22.68,20.41,24.95,Medium (10-25 kg),50.8,55.88,Herding Group,Regular Exercise,Daily Brushing,Independent
+Bedlington Terrier,13.7,13.4,14.0,1843,9.07,7.71,10.43,Small (<10 kg),38.1,44.45,Terrier Group,Energetic,2-3 Times a Week Brushing,Agreeable
+Belgian Malenois,12.0,11.5,12.6,943,27.21,18.14,36.29,Large (25-45 kg),55.88,66.04,Herding Group,Energetic,Weekly Brushing,Easy Training
+Belgian Tervuren,13.8,12.7,14.8,263,27.22,20.41,34.02,Large (25-45 kg),55.88,66.04,Herding Group,Energetic,2-3 Times a Week Brushing,Easy Training
+Bernese Mountain Dog,10.1,9.8,10.4,1565,41.95,31.75,52.16,Large (25-45 kg),58.42,69.85,Working Group,Energetic,2-3 Times a Week Brushing,Easy Training
+Bichon Frise,12.5,12.3,12.7,8802,6.8,5.44,8.16,Small (<10 kg),24.13,29.21,Non-Sporting Group,Regular Exercise,Specialty/Professional,Agreeable
+Black Russian Terrier,10.9,10.2,12.3,234,47.63,36.29,58.97,Giant (>45 kg),66.04,76.2,Working Group,Energetic,Daily Brushing,Easy Training
+Bloodhound,9.3,8.6,11.0,205,43.09,36.29,49.9,Large (25-45 kg),58.42,68.58,Hound Group,Regular Exercise,Weekly Brushing,Independent
+Bolognese,14.9,14.0,,214,3.29,2.49,4.08,Small (<10 kg),25.4,30.48,Foundation Stock Service,Calm,2-3 Times a Week Brushing,Agreeable
+Border Collie,13.1,13.0,13.2,20886,19.28,13.61,24.95,Medium (10-25 kg),45.72,55.88,Herding Group,Needs Lots of Activity,2-3 Times a Week Brushing,Eager to Please
+Border Terrier,14.2,14.1,14.3,11814,6.12,5.22,7.03,Small (<10 kg),30.48,38.1,Terrier Group,Regular Exercise,Weekly Brushing,Easy Training
+Borzoi,12.0,10.8,,185,37.42,27.22,47.63,Large (25-45 kg),66.04,71.12,Hound Group,Energetic,Weekly Brushing,Independent
+Boston Terrier,11.8,11.0,12.2,2427,8.39,5.44,11.34,Small (<10 kg),38.1,43.18,Non-Sporting Group,Regular Exercise,Weekly Brushing,Eager to Please
+Bouvier des Flandres,11.3,10.4,11.9,230,40.83,31.75,49.9,Large (25-45 kg),59.69,69.85,Herding Group,Energetic,Daily Brushing,Agreeable
+Boxer,11.3,11.3,11.5,17219,21.54,6.8,36.29,Medium (10-25 kg),54.61,63.5,Working Group,Energetic,Weekly Brushing,Easy Training
+Bracco Italiano,13.8,11.8,,128,32.88,24.95,40.82,Large (25-45 kg),53.34,68.58,Miscellaneous Class,Energetic,Occasional Bath/Brush,Easy Training
+Briard,12.6,11.3,13.4,277,35.16,24.95,45.36,Large (25-45 kg),55.88,68.58,Herding Group,Regular Exercise,Daily Brushing,Independent
+Brittany,11.1,10.9,11.3,1725,15.88,13.61,18.14,Medium (10-25 kg),44.45,52.07,Sporting Group,Needs Lots of Activity,2-3 Times a Week Brushing,Eager to Please
+Brussels Griffon,13.3,12.7,13.9,417,4.08,3.63,4.54,Small (<10 kg),17.78,25.4,Toy Group,Regular Exercise,2-3 Times a Week Brushing,Agreeable
+Bull Terrier,12.0,11.9,12.2,6654,27.21,22.68,31.75,Large (25-45 kg),53.34,55.88,Terrier Group,Energetic,Weekly Brushing,Independent
+Bulldog,9.8,9.7,10.0,15808,20.41,18.14,22.68,Medium (10-25 kg),35.56,38.1,Non-Sporting Group,Regular Exercise,2-3 Times a Week Brushing,Agreeable
+Bullmastiff,10.2,9.9,10.5,3357,52.16,45.36,58.97,Giant (>45 kg),60.96,68.58,Working Group,Energetic,Occasional Bath/Brush,Agreeable
+Cairn Terrier,14.0,13.8,14.3,3724,6.12,5.9,6.35,Small (<10 kg),24.13,25.4,Terrier Group,Regular Exercise,Weekly Brushing,Agreeable
+Canaan Dog,12.0,9.5,14.7,73,20.41,15.88,24.95,Medium (10-25 kg),48.26,60.96,Herding Group,Regular Exercise,Weekly Brushing,Independent
+Cane Corso,8.1,6.5,9.5,303,,,,Small (<10 kg),59.69,69.85,Working Group,Energetic,Occasional Bath/Brush,Agreeable
+Cardigan Welsh Corgi,13.1,12.5,14.4,272,14.29,11.34,17.24,Medium (10-25 kg),26.67,31.75,Herding Group,Energetic,Weekly Brushing,Agreeable
+Caucasian Shepherd Dog,5.4,4.6,,74,61.01,44.91,77.11,Giant (>45 kg),58.42,76.2,Foundation Stock Service,Calm,2-3 Times a Week Brushing,Independent
+Cavalier King Charles Spaniel,11.8,11.7,11.9,20661,7.03,5.9,8.16,Small (<10 kg),30.48,33.02,Toy Group,Calm,Weekly Brushing,Eager to Please
+Chesapeake Bay Retriever,11.6,10.5,,168,30.62,24.95,36.29,Large (25-45 kg),53.34,66.04,Sporting Group,Energetic,2-3 Times a Week Brushing,Agreeable
+Chihuahua,11.8,11.5,11.9,14636,2.72,2.72,2.72,Small (<10 kg),12.7,20.32,Toy Group,Regular Exercise,Occasional Bath/Brush,Independent
+Chinese Crested,13.4,13.0,13.8,1322,4.54,3.63,5.44,Small (<10 kg),27.94,33.02,Toy Group,Regular Exercise,Occasional Bath/Brush,Agreeable
+Chinese Shar Pei,10.6,10.3,10.9,6354,,,,Unknown,,,Other,,,
+Chow Chow,12.1,11.7,12.5,1335,26.08,20.41,31.75,Large (25-45 kg),43.18,50.8,Non-Sporting Group,Regular Exercise,2-3 Times a Week Brushing,May be Stubborn
+Clumber Spaniel,12.3,11.7,13.9,385,31.76,24.95,38.56,Large (25-45 kg),43.18,50.8,Sporting Group,Regular Exercise,Weekly Brushing,Agreeable
+Collie,13.3,13.3,13.6,3275,28.35,22.68,34.02,Large (25-45 kg),55.88,66.04,Herding Group,Regular Exercise,2-3 Times a Week Brushing,Easy Training
+Coton de Tulear,14.2,13.1,,363,5.21,3.63,6.8,Small (<10 kg),22.86,27.94,Non-Sporting Group,Regular Exercise,Daily Brushing,Easy Training
+Curly Coated Retriever,12.2,11.2,12.8,218,,,,Unknown,,,Other,,,
+Dachshund,13.2,13.0,13.5,3231,9.75,4.99,14.51,Small (<10 kg),12.7,22.86,Hound Group,Regular Exercise,Weekly Brushing,Agreeable
+Dalmatian,13.2,13.0,13.3,4569,26.08,20.41,31.75,Large (25-45 kg),48.26,60.96,Non-Sporting Group,Energetic,Weekly Brushing,Agreeable
+Dandie Dinmont Terrier,12.8,12.2,14.6,245,9.53,8.16,10.89,Small (<10 kg),20.32,27.94,Terrier Group,Regular Exercise,Daily Brushing,Independent
+Doberman Pinscher,11.2,11.0,11.5,5154,36.29,27.22,45.36,Large (25-45 kg),60.96,71.12,Working Group,Needs Lots of Activity,Occasional Bath/Brush,Eager to Please
+Dogue de Bordeaux,11.1,10.6,11.7,4631,47.41,44.91,49.9,Giant (>45 kg),58.42,66.04,Working Group,Regular Exercise,Occasional Bath/Brush,Agreeable
+English Cocker Spaniel,13.3,13.2,13.3,33887,13.61,11.79,15.42,Medium (10-25 kg),38.1,43.18,Sporting Group,Regular Exercise,2-3 Times a Week Brushing,Eager to Please
+English Setter,13.1,12.7,13.6,834,28.35,20.41,36.29,Large (25-45 kg),58.42,68.58,Sporting Group,Energetic,2-3 Times a Week Brushing,Easy Training
+English Springer Spaniel,13.5,13.4,13.6,24126,20.41,18.14,22.68,Medium (10-25 kg),48.26,50.8,Sporting Group,Regular Exercise,Weekly Brushing,Eager to Please
+Field Spaniel,13.1,12.5,13.4,378,19.28,15.88,22.68,Medium (10-25 kg),43.18,45.72,Sporting Group,Regular Exercise,Weekly Brushing,Agreeable
+Finnish Lapphund,13.8,13.5,,128,19.5,14.97,24.04,Medium (10-25 kg),40.64,53.34,Herding Group,Regular Exercise,Weekly Brushing,Eager to Please
+Flat Coated Retriever,11.7,11.5,11.9,2932,,,,Unknown,,,Other,,,
+Foxhound,13.0,11.4,16.9,102,29.48,27.22,31.75,Large (25-45 kg),53.34,63.5,Hound Group,Energetic,Occasional Bath/Brush,Independent
+French Bulldog,9.8,9.4,10.1,14316,12.7,12.7,12.7,Medium (10-25 kg),27.94,33.02,Non-Sporting Group,Calm,Occasional Bath/Brush,Agreeable
+German Shepherd Dog,11.3,11.3,11.4,30681,31.75,22.68,40.82,Large (25-45 kg),55.88,66.04,Herding Group,Regular Exercise,Weekly Brushing,Eager to Please
+German Shorthaired Pointer,13.4,13.3,13.6,4260,26.08,20.41,31.75,Large (25-45 kg),53.34,63.5,Sporting Group,Needs Lots of Activity,Weekly Brushing,Eager to Please
+German Spitz Mittel,14.0,13.3,14.6,307,,,,Unknown,,,Other,,,
+German Wirehaired Pointer,13.0,12.5,13.6,700,27.21,22.68,31.75,Large (25-45 kg),55.88,66.04,Sporting Group,Needs Lots of Activity,Weekly Brushing,Eager to Please
+Giant Schnauzer,12.1,11.5,12.8,495,31.76,24.95,38.56,Large (25-45 kg),59.69,69.85,Working Group,Needs Lots of Activity,Daily Brushing,Easy Training
+Glen Of Imaal Terrier,12.1,11.6,13.5,153,16.32,14.51,18.14,Medium (10-25 kg),31.75,35.56,Terrier Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Golden Retriever,13.2,13.1,13.2,15758,29.48,24.95,34.02,Large (25-45 kg),54.61,60.96,Sporting Group,Needs Lots of Activity,Weekly Brushing,Eager to Please
+Gordon Setter,12.4,12.1,12.8,531,28.35,20.41,36.29,Large (25-45 kg),58.42,68.58,Sporting Group,Needs Lots of Activity,Weekly Brushing,Independent
+Great Dane,10.6,10.4,11.0,2850,64.64,49.9,79.38,Giant (>45 kg),71.12,81.28,Working Group,Energetic,Occasional Bath/Brush,Agreeable
+Great Pyrenees,10.9,10.5,11.3,388,41.96,38.56,45.36,Large (25-45 kg),63.5,81.28,Working Group,Needs Lots of Activity,Weekly Brushing,Independent
+Greyhound,11.5,11.4,11.6,6989,29.48,27.22,31.75,Large (25-45 kg),68.58,76.2,Hound Group,Energetic,Occasional Bath/Brush,Independent
+Havanese,14.5,14.1,,437,4.54,3.18,5.9,Small (<10 kg),21.59,29.21,Toy Group,Regular Exercise,2-3 Times a Week Brushing,Easy Training
+Irish Setter,12.9,12.6,13.1,2034,29.48,27.22,31.75,Large (25-45 kg),63.5,68.58,Sporting Group,Needs Lots of Activity,2-3 Times a Week Brushing,Agreeable
+Irish Terrier,13.5,13.1,14.0,681,11.79,11.34,12.25,Medium (10-25 kg),45.72,45.72,Terrier Group,Regular Exercise,Occasional Bath/Brush,Agreeable
+Irish Water Spaniel,10.8,10.4,11.9,242,25.62,20.41,30.84,Large (25-45 kg),53.34,60.96,Sporting Group,Needs Lots of Activity,Weekly Brushing,Easy Training
+Irish Wolfhound,9.9,9.2,11.0,719,51.03,47.63,54.43,Giant (>45 kg),76.2,81.28,Hound Group,Regular Exercise,Weekly Brushing,Independent
+Italian Greyhound,14.0,13.2,15.1,459,4.76,3.18,6.35,Small (<10 kg),33.02,38.1,Toy Group,Regular Exercise,Occasional Bath/Brush,Independent
+Jack Russell Terrier,13.3,13.2,13.3,32663,,,,Unknown,,,Other,,,
+Japanese Chin,12.5,12.2,13.3,515,4.08,3.18,4.99,Small (<10 kg),20.32,27.94,Toy Group,Regular Exercise,Weekly Brushing,Independent
+Japanese Spitz,13.0,12.3,13.7,453,7.94,4.54,11.34,Small (<10 kg),30.48,38.1,Foundation Stock Service,Regular Exercise,Weekly Brushing,Easy Training
+Keeshond,12.3,11.6,13.8,226,18.14,15.88,20.41,Medium (10-25 kg),43.18,45.72,Non-Sporting Group,Regular Exercise,2-3 Times a Week Brushing,Easy Training
+Kelpie,12.0,11.6,13.5,146,,,,Unknown,43.18,50.8,Foundation Stock Service,Energetic,Weekly Brushing,Eager to Please
+Kerry Blue Terrier,12.4,11.9,13.0,536,16.55,14.97,18.14,Medium (10-25 kg),44.45,49.53,Terrier Group,Regular Exercise,2-3 Times a Week Brushing,May be Stubborn
+Labrador Retriever,13.1,13.0,13.1,59583,30.62,24.95,36.29,Large (25-45 kg),54.61,62.23,Sporting Group,Needs Lots of Activity,Weekly Brushing,Eager to Please
+Lakeland Terrier,14.2,13.9,14.5,1669,7.71,7.71,7.71,Small (<10 kg),35.56,38.1,Terrier Group,Regular Exercise,Weekly Brushing,Agreeable
+Lancashire Heeler,15.4,14.7,15.9,351,5.89,4.08,7.71,Small (<10 kg),25.4,30.48,Miscellaneous Class,Energetic,Occasional Bath/Brush,Easy Training
+Large Munsterlander,14.1,13.5,,165,,,,Unknown,,,Other,,,
+Leonberger,10.0,9.5,10.3,997,58.97,40.82,77.11,Giant (>45 kg),64.77,80.01,Working Group,Regular Exercise,Daily Brushing,Eager to Please
+Lhasa Apso,14.0,13.9,14.2,9939,6.8,5.44,8.16,Small (<10 kg),25.4,27.94,Non-Sporting Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Lowchen,13.9,13.3,15.7,193,,,,Unknown,,,Other,,,
+Maltese,13.1,12.6,13.5,2687,3.18,3.18,3.18,Small (<10 kg),17.78,22.86,Toy Group,Regular Exercise,Daily Brushing,Agreeable
+Mastiff,9.0,8.9,9.2,3259,79.38,54.43,104.33,Giant (>45 kg),69.85,76.2,Working Group,Regular Exercise,Occasional Bath/Brush,Agreeable
+Miniature Bull Terrier,12.2,11.0,13.8,362,10.43,8.16,12.7,Medium (10-25 kg),25.4,35.56,Terrier Group,Energetic,Occasional Bath/Brush,Independent
+Miniature Dachshund,14.0,13.7,14.2,8997,,,,Unknown,,,Other,,,
+Miniature Pinscher,13.7,13.1,14.2,827,4.08,3.63,4.54,Small (<10 kg),25.4,31.75,Toy Group,Regular Exercise,Occasional Bath/Brush,Independent
+Miniature Schnauzer,13.3,13.2,13.5,9670,7.03,4.99,9.07,Small (<10 kg),30.48,35.56,Terrier Group,Regular Exercise,Specialty/Professional,Eager to Please
+Neapolitan Mastiff,9.3,8.8,10.2,577,58.97,49.9,68.04,Giant (>45 kg),60.96,78.74,Working Group,Regular Exercise,Weekly Brushing,May be Stubborn
+Newfoundland,11.0,10.9,11.6,2162,56.7,45.36,68.04,Giant (>45 kg),66.04,71.12,Working Group,Regular Exercise,Weekly Brushing,Easy Training
+Norfolk Terrier,13.5,13.1,13.8,1202,5.21,4.99,5.44,Small (<10 kg),22.86,25.4,Terrier Group,Regular Exercise,Weekly Brushing,Agreeable
+Norwegian Elkhound,12.9,12.4,14.1,209,23.36,21.77,24.95,Medium (10-25 kg),49.53,52.07,Hound Group,Regular Exercise,Weekly Brushing,Agreeable
+Norwich Terrier,14.0,13.5,15.1,235,5.44,5.44,5.44,Small (<10 kg),25.4,25.4,Terrier Group,Energetic,Weekly Brushing,Agreeable
+Nova Scotia Duck Tolling Retriever,13.2,12.2,,333,19.28,15.88,22.68,Medium (10-25 kg),43.18,53.34,Sporting Group,Needs Lots of Activity,Weekly Brushing,Easy Training
+Old English Sheepdog,12.1,11.9,12.5,1814,36.29,27.22,45.36,Large (25-45 kg),53.34,55.88,Herding Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Papillon,14.5,14.1,14.9,1542,3.41,2.27,4.54,Small (<10 kg),20.32,27.94,Toy Group,Regular Exercise,Weekly Brushing,Eager to Please
+Parson Russell Terrier,13.8,13.5,14.0,3776,6.8,5.9,7.71,Small (<10 kg),33.02,35.56,Terrier Group,Needs Lots of Activity,Weekly Brushing,Agreeable
+Pekingese,13.3,13.0,13.8,1034,6.35,6.35,6.35,Small (<10 kg),15.24,22.86,Toy Group,Calm,2-3 Times a Week Brushing,May be Stubborn
+Pembroke Welsh Corgi,13.2,12.7,13.6,864,13.15,12.7,13.61,Medium (10-25 kg),25.4,30.48,Herding Group,Energetic,Weekly Brushing,Agreeable
+Petite Basset Griffon Vendeen,13.7,13.2,14.0,644,,,,Unknown,,,Other,,,
+Pharaoh Hound,10.0,6.9,13.3,59,22.68,20.41,24.95,Medium (10-25 kg),53.34,63.5,Hound Group,Energetic,Weekly Brushing,Independent
+Polish Lowland Sheepdog,13.2,12.3,14.8,107,18.14,13.61,22.68,Medium (10-25 kg),43.18,50.8,Herding Group,Energetic,Daily Brushing,May be Stubborn
+Pomeranian,12.2,12.0,12.5,4111,2.27,1.36,3.18,Small (<10 kg),15.24,17.78,Toy Group,Regular Exercise,2-3 Times a Week Brushing,Agreeable
+Poodle,14.0,13.8,14.1,8826,5.67,4.54,6.8,Small (<10 kg),25.4,38.1,Non-Sporting Group,,,
+Portuguese Water Dog,13.0,11.5,14.9,215,21.55,15.88,27.22,Medium (10-25 kg),43.18,58.42,Working Group,Energetic,Daily Brushing,Easy Training
+Presa Canario,7.7,7.0,9.5,242,44.0,38.1,49.9,Large (25-45 kg),55.88,66.04,Foundation Stock Service,Calm,Occasional Bath/Brush,
+Pug,11.6,11.4,11.8,12808,7.25,6.35,8.16,Small (<10 kg),25.4,33.02,Toy Group,Regular Exercise,Weekly Brushing,Agreeable
+Puli,13.3,12.8,14.4,161,13.61,11.34,15.88,Medium (10-25 kg),40.64,43.18,Herding Group,Regular Exercise,Specialty/Professional,Independent
+Rhodesian Ridgeback,12.0,11.9,12.2,2991,35.16,31.75,38.56,Large (25-45 kg),60.96,68.58,Hound Group,Regular Exercise,Weekly Brushing,Independent
+Rottweiler,10.6,10.4,10.7,9717,48.76,36.29,61.23,Giant (>45 kg),55.88,68.58,Working Group,Regular Exercise,Weekly Brushing,Agreeable
+Saluki,13.3,12.3,14.0,597,23.81,18.14,29.48,Medium (10-25 kg),58.42,71.12,Hound Group,Energetic,Occasional Bath/Brush,Independent
+Samoyed,13.1,12.7,13.5,1059,22.68,15.88,29.48,Medium (10-25 kg),48.26,59.69,Working Group,Energetic,2-3 Times a Week Brushing,Independent
+Schipperke,14.2,12.7,15.8,104,5.9,4.54,7.26,Small (<10 kg),25.4,33.02,Non-Sporting Group,Energetic,Weekly Brushing,Independent
+Scottish Deerhound,10.5,9.7,11.3,617,41.96,34.02,49.9,Large (25-45 kg),71.12,81.28,Hound Group,Regular Exercise,Occasional Bath/Brush,Independent
+Scottish Terrier,12.7,12.5,12.9,2616,9.07,8.16,9.98,Small (<10 kg),25.4,25.4,Terrier Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Sealyham Terrier,13.1,12.3,16.0,158,10.66,10.43,10.89,Medium (10-25 kg),26.67,26.67,Terrier Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Shetland Sheepdog,13.4,13.1,13.6,2698,9.07,6.8,11.34,Small (<10 kg),33.02,40.64,Herding Group,Regular Exercise,2-3 Times a Week Brushing,Eager to Please
+Shiba Inu,14.6,14.0,15.1,514,9.07,7.71,10.43,Small (<10 kg),34.29,41.91,Non-Sporting Group,Regular Exercise,Weekly Brushing,Independent
+Shih Tzu,12.8,12.6,12.9,17901,5.67,4.08,7.26,Small (<10 kg),22.86,26.67,Toy Group,Regular Exercise,Daily Brushing,Agreeable
+Siberian Husky,11.9,11.7,12.0,6400,21.55,15.88,27.22,Medium (10-25 kg),50.8,59.69,Working Group,Energetic,Weekly Brushing,Independent
+Silky Terrier,13.3,11.7,14.2,150,4.54,4.54,4.54,Small (<10 kg),22.86,25.4,Toy Group,Regular Exercise,2-3 Times a Week Brushing,Agreeable
+Skye Terrier,12.4,11.6,13.9,130,18.14,15.88,20.41,Medium (10-25 kg),24.13,25.4,Terrier Group,Regular Exercise,Daily Brushing,Independent
+Soft Coated Wheaten Terrier,13.7,13.2,14.4,793,15.88,13.61,18.14,Medium (10-25 kg),43.18,48.26,Terrier Group,Energetic,2-3 Times a Week Brushing,Independent
+Spanish Water Dog,13.7,13.3,,302,18.14,14.06,22.23,Medium (10-25 kg),40.01,50.16,Herding Group,Energetic,Specialty/Professional,Eager to Please
+Spinone Italiano,11.9,11.6,12.4,908,,,,Unknown,55.88,68.58,Sporting Group,Energetic,Weekly Brushing,Agreeable
+St Bernard,9.3,9.0,9.8,1638,68.04,54.43,81.65,Giant (>45 kg),66.04,76.2,Working Group,Regular Exercise,Weekly Brushing,Agreeable
+Staffordshire Bull Terrier,12.0,12.0,12.1,61548,14.06,10.89,17.24,Medium (10-25 kg),35.56,40.64,Terrier Group,Energetic,Weekly Brushing,May be Stubborn
+Standard Schnauzer,13.0,12.7,13.2,1261,18.14,13.61,22.68,Medium (10-25 kg),44.45,49.53,Working Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Sussex Spaniel,13.5,12.6,15.1,142,18.14,15.88,20.41,Medium (10-25 kg),33.02,38.1,Sporting Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Swedish Valhund,14.0,12.5,,83,,,,Unknown,,,Other,,,
+Tibetan Mastiff,13.3,10.9,,139,49.9,31.75,68.04,Giant (>45 kg),60.96,66.04,Working Group,Regular Exercise,2-3 Times a Week Brushing,Independent
+Tibetan Spaniel,15.2,14.8,15.7,488,5.44,4.08,6.8,Small (<10 kg),25.4,25.4,Non-Sporting Group,Calm,Weekly Brushing,Agreeable
+Tibetan Terrier,13.8,13.5,14.2,2530,10.88,8.16,13.61,Medium (10-25 kg),35.56,43.18,Non-Sporting Group,Energetic,2-3 Times a Week Brushing,Independent
+Toy Fox Terrier,12.9,12.3,13.8,215,2.39,1.59,3.18,Small (<10 kg),21.59,29.21,Toy Group,Energetic,Weekly Brushing,Eager to Please
+Toy Manchester Terrier,13.0,12.0,13.6,477,,,,Unknown,,,Other,,,
+Vizsla,13.5,13.2,13.9,3468,23.59,19.96,27.22,Medium (10-25 kg),53.34,60.96,Sporting Group,Energetic,Weekly Brushing,Eager to Please
+Weimaraner,12.8,12.6,13.0,4219,32.88,24.95,40.82,Large (25-45 kg),58.42,68.58,Sporting Group,Needs Lots of Activity,Weekly Brushing,Eager to Please
+Welsh Springer Spaniel,14.0,13.3,14.3,734,20.41,15.88,24.95,Medium (10-25 kg),43.18,48.26,Sporting Group,Energetic,Weekly Brushing,Easy Training
+Welsh Terrier,13.8,13.5,14.6,716,9.07,9.07,9.07,Small (<10 kg),38.1,38.1,Terrier Group,Energetic,2-3 Times a Week Brushing,Agreeable
+West Highland White Terrier,13.4,13.3,13.5,18662,7.94,6.8,9.07,Small (<10 kg),25.4,27.94,Terrier Group,Regular Exercise,Daily Brushing,Agreeable
+Whippet,13.4,13.2,13.7,6454,14.74,11.34,18.14,Medium (10-25 kg),45.72,55.88,Hound Group,Regular Exercise,Occasional Bath/Brush,Independent
+Wire Fox Terrier,13.5,13.3,13.7,1934,7.48,6.8,8.16,Small (<10 kg),38.1,38.1,Terrier Group,Regular Exercise,Weekly Brushing,Agreeable
+Yorkshire Terrier,13.3,13.3,13.4,24088,3.18,3.18,3.18,Small (<10 kg),17.78,20.32,Toy Group,Regular Exercise,Specialty/Professional,May be Stubborn

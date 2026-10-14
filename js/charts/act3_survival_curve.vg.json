@@ -1,0 +1,302 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 450,
+  "data": {
+    "url": "data/mcmillan_survival_curves_by_sex.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.decimal_year != null && datum.decimal_year <= 18 && datum.survival_probability != null"
+    },
+    {
+      "calculate": "format(datum.survival_probability * 100, '.1f') + '%'",
+      "as": "survival_pct_label"
+    },
+    {
+      "calculate": "format(datum.lower_95_ci * 100, '.1f') + '% – ' + format(datum.upper_95_ci * 100, '.1f') + '%'",
+      "as": "ci_range"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.22
+      },
+      "encoding": {
+        "x": {
+          "field": "decimal_year",
+          "type": "quantitative",
+          "title": "Pet Age (Years)",
+          "scale": {
+            "domain": [
+              0,
+              18
+            ]
+          },
+          "axis": {
+            "tickCount": 10,
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "gridColor": "#f1f5f9",
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1"
+          }
+        },
+        "y": {
+          "field": "lower_95_ci",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              1.02
+            ]
+          },
+          "axis": {
+            "format": ".0%",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "gridColor": "#f1f5f9",
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1",
+            "title": "Survival Probability (%)"
+          }
+        },
+        "y2": {
+          "field": "upper_95_ci"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Female",
+              "Male"
+            ],
+            "range": [
+              "#8b5cf6",
+              "#2563eb"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.8,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "decimal_year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "survival_probability",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal",
+          "title": "Canine Sex",
+          "scale": {
+            "domain": [
+              "Female",
+              "Male"
+            ],
+            "range": [
+              "#8b5cf6",
+              "#2563eb"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "padding": 10,
+            "fillColor": "rgba(255, 255, 255, 0.95)",
+            "strokeColor": "#e2e8f0",
+            "cornerRadius": 0
+          }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "median_age": 12,
+            "label": "National Median Lifespan (12.0 Years)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#ef4444",
+        "strokeWidth": 2,
+        "strokeDash": [
+          6,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "median_age",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 12.15,
+            "y": 0.88,
+            "text": "Median Lifespan: 12.0 yrs"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#ef4444"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "x": 12.15,
+            "y": 0.82,
+            "text": "56.1% ♀ vs 53.6% ♂ survive to 12"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "fontSize": 10.5,
+        "fontWeight": 500,
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "y",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "text",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 35,
+        "opacity": 0,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "decimal_year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "survival_probability",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "sex",
+          "type": "nominal"
+        },
+        "tooltip": [
+          {
+            "field": "decimal_year",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Pet Age (Years)"
+          },
+          {
+            "field": "sex",
+            "type": "nominal",
+            "title": "Sex"
+          },
+          {
+            "field": "survival_pct_label",
+            "type": "nominal",
+            "title": "Survival Probability"
+          },
+          {
+            "field": "ci_range",
+            "type": "nominal",
+            "title": "95% Confidence Bounds"
+          },
+          {
+            "field": "deaths",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Cohort Deaths Recorded"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

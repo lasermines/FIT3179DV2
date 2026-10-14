@@ -1,0 +1,283 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 430,
+  "data": {
+    "url": "data/dog_breeds_longevity_and_biometrics_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "median_lifespan": "number",
+        "avg_weight_kg": "number",
+        "sample_size": "number",
+        "ci_lower": "number",
+        "ci_upper": "number"
+      }
+    }
+  },
+  "params": [
+    {
+      "name": "breed_group_select",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": [
+          "All",
+          "Toy Group",
+          "Terrier Group",
+          "Hound Group",
+          "Sporting Group",
+          "Working Group",
+          "Herding Group",
+          "Non-Sporting Group"
+        ],
+        "name": "Filter Breed Group: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "isValid(datum.avg_weight_kg) && datum.avg_weight_kg > 0 && isValid(datum.median_lifespan) && datum.size_category != 'Unknown'"
+    },
+    {
+      "filter": "breed_group_select === 'All' || datum.breed_group === breed_group_select"
+    },
+    {
+      "calculate": "datum.median_lifespan + (sin(datum.avg_weight_kg * 43.7 + datum.sample_size) * 0.15)",
+      "as": "jittered_lifespan"
+    },
+    {
+      "calculate": "(isValid(datum.ci_lower) && isValid(datum.ci_upper)) ? format(datum.ci_lower, '.1f') + ' – ' + format(datum.ci_upper, '.1f') + ' yrs' : 'N/A'",
+      "as": "ci_range"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.78,
+        "stroke": "#ffffff",
+        "strokeWidth": 0.9,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_weight_kg",
+          "type": "quantitative",
+          "title": "Adult Body Weight (kg)",
+          "scale": {
+            "zero": false,
+            "padding": 12
+          },
+          "axis": {
+            "gridColor": "#f1f5f9",
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11
+          }
+        },
+        "y": {
+          "field": "jittered_lifespan",
+          "type": "quantitative",
+          "title": "Median Lifespan (Years)",
+          "scale": {
+            "domain": [
+              4.5,
+              16.5
+            ]
+          },
+          "axis": {
+            "gridColor": "#f1f5f9",
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11
+          }
+        },
+        "color": {
+          "field": "size_category",
+          "type": "nominal",
+          "title": "Size Category",
+          "scale": {
+            "domain": [
+              "Small (<10 kg)",
+              "Medium (10-25 kg)",
+              "Large (25-45 kg)",
+              "Giant (>45 kg)"
+            ],
+            "range": [
+              "#0284c7",
+              "#10b981",
+              "#f59e0b",
+              "#ef4444"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "fillColor": "rgba(255, 255, 255, 0.94)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#e2e8f0",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10
+          }
+        },
+        "size": {
+          "field": "sample_size",
+          "type": "quantitative",
+          "title": "Study Sample Size",
+          "scale": {
+            "type": "sqrt",
+            "range": [
+              35,
+              450
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "fillColor": "rgba(255, 255, 255, 0.94)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#e2e8f0",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "breed",
+            "type": "nominal",
+            "title": "Breed"
+          },
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "size_category",
+            "type": "nominal",
+            "title": "Size Category"
+          },
+          {
+            "field": "avg_weight_kg",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Adult Weight (kg)"
+          },
+          {
+            "field": "median_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Median Lifespan (Years)"
+          },
+          {
+            "field": "ci_range",
+            "type": "nominal",
+            "title": "95% Confidence Interval"
+          },
+          {
+            "field": "sample_size",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Sample Size"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "regression": "median_lifespan",
+          "on": "avg_weight_kg",
+          "method": "quad"
+        }
+      ],
+      "mark": {
+        "type": "line",
+        "color": "#dc2626",
+        "strokeWidth": 2.5,
+        "strokeDash": [
+          5,
+          4
+        ]
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_weight_kg",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "median_lifespan",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "filter": "datum.breed === 'Lancashire Heeler' || datum.breed === 'Caucasian Shepherd Dog'"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#e2e8f0",
+        "dy": -12,
+        "dx": 0
+      },
+      "encoding": {
+        "x": {
+          "field": "avg_weight_kg",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "jittered_lifespan",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "breed",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

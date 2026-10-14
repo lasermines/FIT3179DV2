@@ -1,0 +1,292 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 450,
+  "data": {
+    "url": "data/annual_vet_expenses_treemap.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.subcategory === 'Parasite Prevention (Flea & Tick)' ? 0 : datum.subcategory === 'Annual Health Checkup' ? 27.81 : datum.subcategory === 'Core Vaccinations' ? 27.81 : datum.subcategory === 'Prophylactic Scale & Polish' ? 0 : datum.subcategory === 'Extractions & Periodontal Care' ? 41.61 : datum.subcategory === 'After-Hours Emergency Triage' ? 62.42 : datum.subcategory === 'Orthopaedic & Soft Tissue Surgery' ? 62.42 : datum.subcategory === 'Chronic Arthritis & Pain Relief' ? 62.42 : datum.subcategory === 'Prescription Antibiotics & Skin Care' ? 87.04 : datum.subcategory === 'Comprehensive Blood Panels & Urinalysis' ? 62.42 : 85.91",
+      "as": "x0"
+    },
+    {
+      "calculate": "datum.subcategory === 'Parasite Prevention (Flea & Tick)' ? 27.81 : datum.subcategory === 'Annual Health Checkup' ? 62.42 : datum.subcategory === 'Core Vaccinations' ? 62.42 : datum.subcategory === 'Prophylactic Scale & Polish' ? 41.61 : datum.subcategory === 'Extractions & Periodontal Care' ? 62.42 : datum.subcategory === 'After-Hours Emergency Triage' ? 100 : datum.subcategory === 'Orthopaedic & Soft Tissue Surgery' ? 100 : datum.subcategory === 'Chronic Arthritis & Pain Relief' ? 87.04 : datum.subcategory === 'Prescription Antibiotics & Skin Care' ? 100 : datum.subcategory === 'Comprehensive Blood Panels & Urinalysis' ? 85.91 : 100",
+      "as": "x1"
+    },
+    {
+      "calculate": "datum.subcategory === 'Parasite Prevention (Flea & Tick)' ? 46.60 : datum.subcategory === 'Annual Health Checkup' ? 71.11 : datum.subcategory === 'Core Vaccinations' ? 46.60 : datum.subcategory === 'Prophylactic Scale & Polish' ? 0 : datum.subcategory === 'Extractions & Periodontal Care' ? 0 : datum.subcategory === 'After-Hours Emergency Triage' ? 70.97 : datum.subcategory === 'Orthopaedic & Soft Tissue Surgery' ? 42.74 : datum.subcategory === 'Chronic Arthritis & Pain Relief' ? 19.36 : datum.subcategory === 'Prescription Antibiotics & Skin Care' ? 19.36 : datum.subcategory === 'Comprehensive Blood Panels & Urinalysis' ? 0 : 0",
+      "as": "y0"
+    },
+    {
+      "calculate": "datum.subcategory === 'Parasite Prevention (Flea & Tick)' ? 100 : datum.subcategory === 'Annual Health Checkup' ? 100 : datum.subcategory === 'Core Vaccinations' ? 71.11 : datum.subcategory === 'Prophylactic Scale & Polish' ? 46.60 : datum.subcategory === 'Extractions & Periodontal Care' ? 46.60 : datum.subcategory === 'After-Hours Emergency Triage' ? 100 : datum.subcategory === 'Orthopaedic & Soft Tissue Surgery' ? 70.97 : datum.subcategory === 'Chronic Arthritis & Pain Relief' ? 42.74 : datum.subcategory === 'Prescription Antibiotics & Skin Care' ? 42.74 : datum.subcategory === 'Comprehensive Blood Panels & Urinalysis' ? 19.36 : 19.36",
+      "as": "y1"
+    },
+    {
+      "calculate": "(datum.x0 + datum.x1) / 2",
+      "as": "xc"
+    },
+    {
+      "calculate": "(datum.y0 + datum.y1) / 2",
+      "as": "yc"
+    },
+    {
+      "calculate": "datum.subcategory === 'Parasite Prevention (Flea & Tick)' ? 'Parasite Prevention' : datum.subcategory === 'Annual Health Checkup' ? 'Annual Checkup' : datum.subcategory === 'Core Vaccinations' ? 'Core Vaccinations' : datum.subcategory === 'Prophylactic Scale & Polish' ? 'Dental Scaling' : datum.subcategory === 'Extractions & Periodontal Care' ? 'Tooth Extractions' : datum.subcategory === 'After-Hours Emergency Triage' ? 'Emergency Triage' : datum.subcategory === 'Orthopaedic & Soft Tissue Surgery' ? 'Orthopaedic Surgery' : datum.subcategory === 'Chronic Arthritis & Pain Relief' ? 'Arthritis Relief' : datum.subcategory === 'Prescription Antibiotics & Skin Care' ? 'Antibiotics' : datum.subcategory === 'Comprehensive Blood Panels & Urinalysis' ? 'Blood & Urine Tests' : datum.subcategory === 'Radiography & Diagnostic Ultrasound' ? 'Imaging & X-Ray' : datum.subcategory",
+      "as": "display_name"
+    },
+    {
+      "calculate": "'$' + datum.avg_annual_spend_aud + ' · ' + format(datum.pct_of_total, '.1f') + '%'",
+      "as": "display_value"
+    },
+    {
+      "calculate": "'$' + datum.avg_annual_spend_aud + ' AUD'",
+      "as": "formatted_spend"
+    },
+    {
+      "calculate": "format(datum.pct_of_total, '.1f') + '%'",
+      "as": "formatted_pct"
+    }
+  ],
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "tile_hover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 0,
+        "stroke": "#171311",
+        "strokeWidth": 2.5,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "x0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "x2": {
+          "field": "x1"
+        },
+        "y": {
+          "field": "y0",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "y2": {
+          "field": "y1"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "title": "Expense Category",
+          "scale": {
+            "domain": [
+              "Routine Health",
+              "Dental Procedures",
+              "Emergency & Surgery",
+              "Medications & Therapeutics",
+              "Diagnostics & Pathology"
+            ],
+            "range": [
+              "#99af6b",
+              "#5c9cb8",
+              "#d1766e",
+              "#fcba81",
+              "#9480ba"
+            ]
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10.5,
+            "padding": 12,
+            "fillColor": "rgba(23, 19, 17, 0.88)",
+            "strokeColor": "#362f2c",
+            "titleColor": "#e6d5c2",
+            "labelColor": "#96887a",
+            "cornerRadius": 0
+          }
+        },
+        "stroke": {
+          "condition": {
+            "param": "tile_hover",
+            "empty": false,
+            "value": "#f2e8dc"
+          },
+          "value": "#171311"
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "tile_hover",
+            "empty": false,
+            "value": 3.5
+          },
+          "value": 2.5
+        },
+        "opacity": {
+          "condition": {
+            "param": "tile_hover",
+            "empty": true,
+            "value": 0.92
+          },
+          "value": 0.72
+        },
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Category"
+          },
+          {
+            "field": "subcategory",
+            "type": "nominal",
+            "title": "Subcategory"
+          },
+          {
+            "field": "formatted_spend",
+            "type": "nominal",
+            "title": "Annual Spend (AUD)"
+          },
+          {
+            "field": "formatted_pct",
+            "type": "nominal",
+            "title": "Percentage of Healthcare Budget"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": {
+          "expr": "datum.subcategory === 'Prescription Antibiotics & Skin Care' || datum.subcategory === 'Radiography & Diagnostic Ultrasound' ? 9.5 : 10.5"
+        },
+        "fontWeight": 700,
+        "color": "#ffffff",
+        "dy": -7,
+        "pointerEvents": "none"
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "yc",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "display_name",
+          "type": "nominal"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 9.5,
+        "fontWeight": 500,
+        "color": "#f1f5f9",
+        "dy": 8,
+        "pointerEvents": "none"
+      },
+      "encoding": {
+        "x": {
+          "field": "xc",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "y": {
+          "field": "yc",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "axis": null
+        },
+        "text": {
+          "field": "display_value",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

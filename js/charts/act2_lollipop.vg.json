@@ -1,0 +1,251 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 520,
+  "data": {
+    "url": "data/dog_breeds_longevity_and_biometrics_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "median_lifespan": "number",
+        "avg_weight_kg": "number",
+        "sample_size": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "isValid(datum.median_lifespan) && datum.breed != null && datum.size_category != 'Unknown'"
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "rank_desc"
+        }
+      ],
+      "sort": [
+        {
+          "field": "median_lifespan",
+          "order": "descending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "row_number",
+          "as": "rank_asc"
+        }
+      ],
+      "sort": [
+        {
+          "field": "median_lifespan",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "filter": "datum.rank_desc <= 10 || datum.rank_asc <= 10"
+    },
+    {
+      "calculate": "datum.rank_desc <= 10 ? 'Top 10 Longest-Lived' : 'Top 10 Shortest-Lived'",
+      "as": "longevity_group"
+    },
+    {
+      "calculate": "format(datum.median_lifespan, '.1f') + ' yrs'",
+      "as": "lifespan_label"
+    },
+    {
+      "calculate": "0",
+      "as": "baseline"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "breed",
+      "type": "nominal",
+      "sort": {
+        "field": "median_lifespan",
+        "order": "descending"
+      },
+      "title": "Canine Breed",
+      "axis": {
+        "titleFontSize": 12,
+        "titleFontWeight": 600,
+        "labelFontSize": 11,
+        "labelFontWeight": 500,
+        "tickColor": "#cbd5e1",
+        "domainColor": "#cbd5e1"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 2.2,
+        "color": "#362f2c"
+      },
+      "encoding": {
+        "x": {
+          "field": "baseline",
+          "type": "quantitative",
+          "title": "Median Lifespan (Years)",
+          "scale": {
+            "domain": [
+              0,
+              17.5
+            ]
+          },
+          "axis": {
+            "gridColor": "rgba(230, 213, 194, 0.06)",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "tickColor": "#362f2c",
+            "domainColor": "#362f2c"
+          }
+        },
+        "x2": {
+          "field": "median_lifespan"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "opacity": 1,
+        "stroke": "#171311",
+        "strokeWidth": 1.2,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "median_lifespan",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "longevity_group",
+          "type": "nominal",
+          "title": "Longevity Standing",
+          "scale": {
+            "domain": [
+              "Top 10 Longest-Lived",
+              "Top 10 Shortest-Lived"
+            ],
+            "range": [
+              "#99af6b",
+              "#d1766e"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "fillColor": "rgba(23, 19, 17, 0.88)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#362f2c",
+            "titleColor": "#e6d5c2",
+            "labelColor": "#96887a",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "breed",
+            "type": "nominal",
+            "title": "Breed"
+          },
+          {
+            "field": "longevity_group",
+            "type": "nominal",
+            "title": "Standing"
+          },
+          {
+            "field": "median_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Median Lifespan (Years)"
+          },
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "size_category",
+            "type": "nominal",
+            "title": "Size Category"
+          },
+          {
+            "field": "avg_weight_kg",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Adult Weight (kg)"
+          },
+          {
+            "field": "sample_size",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Sample Size"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#cbd5e1"
+      },
+      "encoding": {
+        "x": {
+          "field": "median_lifespan",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lifespan_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

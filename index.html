@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A Lifetime of Care: Interactive data visualisation examining Australian pet welfare, canine genetics, and veterinary healthcare.">
+  <meta name="author" content="Kenneth Ee (Monash University FIT3179)">
+  <title>A Lifetime of Care: The Geography, Biology, and Healthcare of Australian Companion Animals</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Pure.css Framework & Responsive Grids -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXzgoNPRPRWNcUnFJ4OmJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Vega, Vega-Lite, and Vega-Embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+
+  <div class="dashboard-container">
+
+    <!-- Header -->
+    <header class="hero-header">
+      <h1>A Lifetime of Care</h1>
+      <p class="hero-subtitle">
+        How Geography, Breed Genetics, and Preventive Care Shape the Lives of Australian Pets
+      </p>
+    </header>
+
+    <!-- INTRO STATEMENT -->
+    <div class="card" style="margin-bottom: 3rem;">
+      <p class="lead" style="margin-bottom: 0;">
+        Australia is one of the most pet-loving nations in the world: roughly <strong>69% of Australian households</strong> own a pet, adding up to over <strong>28.7 million animals</strong>. But their lifespans and welfare outcomes vary dramatically. Where an animal lives, what breed it is, and whether owners provide preventive veterinary care all shape how long they live. This visual story investigates Australian pet welfare using official 2024–2025 records from the RSPCA, biometric data from 584,734 dogs in <em>Nature Scientific Reports</em>, and national veterinary economic surveys.
+      </p>
+    </div>
+
+    <!-- Part 1: Spatial Animal Welfare -->
+    <section class="section-block" id="part-1">
+      <div class="section-header">
+        <div class="section-eyebrow">Part 1 &bull; Spatial Animal Welfare</div>
+        <h2 class="section-title">Where Australian Pets Face the Most Pressure</h2>
+        <p class="section-desc">
+          Animal shelter admissions vary widely across Australian states and territories. Remote regions face high per-capita intake rates due to vast distances and limited vet clinics, while metropolitan hubs handle massive raw volumes.
+        </p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-title">&#9888; Regional Intake Gap: Northern Territory Records 391 Admissions per 10k Residents</div>
+        Adjusted for population, the Northern Territory handles <strong>391 shelter intakes per 10,000 residents — more than 12 times Victoria's rate (31 per 10k)</strong>. Vast travel distances and limited access to desexing clinics create severe shelter pressures in regional communities.
+      </div>
+
+      <!-- Chart 1: State shelter intake choropleth -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Choropleth Map</span>
+          <h3>1. Shelter Intake per 10,000 Residents Across Australian States</h3>
+          <p class="subtitle">The Northern Territory records 391 admissions per 10,000 people — over 12 times higher than Victoria.</p>
+        </div>
+
+        <div id="chart-act1-choropleth" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Hover over any state or territory for population, annual intake numbers, and top species.</span>
+          <span class="source">Source: RSPCA Australia (2024–2025) & ABS (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> 2024–25 RSPCA shelter intake and ABS state population. Key attribute: shelter admissions per 10,000 residents across 8 states and territories.</p>
+          <p><strong>Why:</strong> Identify geographic disparities in animal shelter pressure between remote regions and major urban states.</p>
+          <p><strong>How:</strong> State geographic polygons filled with a purple sequential color scale using stepped thresholds, with hover tooltips for exact numbers.</p>
+        </div>
+      </div>
+
+      <p>
+        While regional areas face the heaviest per-capita intake rates, capital cities take in the largest total volume of animals. Shelters in Brisbane, Sydney, and Melbourne handle tens of thousands of rescues annually while keeping rehoming rates above 54%.
+      </p>
+
+      <!-- Chart 2: Capital city symbol map -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Proportional Symbol Map</span>
+          <h3>2. Capital City Shelter Admissions and Rehoming Rates</h3>
+          <p class="subtitle">Brisbane, Sydney, and Melbourne take in the largest volumes, while maintaining 55% to 66% rehoming rates.</p>
+        </div>
+
+        <div id="chart-act1-symbol-map" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Bubble size shows total admissions; darker green indicates a higher percentage rehomed.</span>
+          <span class="source">Source: RSPCA Australia Capital Hub Reporting (2024–2025)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Geocoordinates for 8 capital city shelter hubs. Attributes: total pets admitted (volume) and percentage rehomed (rate).</p>
+          <p><strong>Why:</strong> Compare the total rescue volume handled by metropolitan shelters against how successfully they rehome animals.</p>
+          <p><strong>How:</strong> Proportional circle marks where bubble area scales with total intake, and teal-blue color encodes the rehoming rate.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">&#9432; Relief Corridors: How Overcrowded Remote Shelters Transfer Pets to Save Lives</div>
+        Remote areas like the Northern Territory and rural Queensland take in far more animals than their small local populations can adopt. To prevent shelter overcrowding and save lives, rescue networks move over <strong>7,360 companion animals every year</strong> via flights and road shuttles to high-demand adoption centres in Melbourne, Sydney, and Adelaide.
+      </div>
+
+      <!-- Chart 3: Interstate transfer flow map -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Flow Map</span>
+          <h3>3. Interstate Rescue Network: Companion Animal Transfer and Rehoming Pathways</h3>
+          <p class="subtitle">Tracking how over 7,360 vulnerable pets are transferred from overstretched regional shelters to high-adoption metropolitan centres.</p>
+        </div>
+
+        <div id="chart-act1-flow-map" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Line thickness shows annual transfer volume. Hover over any route or select a transfer cohort above to inspect specific rescue pathways.</span>
+          <span class="source">Source: RSPCA Australia National Statistics (2024–2025) &amp; Animal Rescue Logistics</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Geographic point coordinates for 16 rescue origins and metropolitan adoption hubs across Australia, connected by directed flow paths. Attributes: annual pets transferred (quantitative link width), animal cohort (categorical color: dogs vs. cats), and facility role (categorical node color: origin vs. destination).</p>
+          <p><strong>Why:</strong> Reveal the national logistics that relieve extreme pet surrender pressure in remote communities by moving animals to capital cities where adoption demand is highest.</p>
+          <p><strong>How:</strong> A spatial flow map layered over an equirectangular projection of Australia. Route lines scale in thickness with transfer numbers, hub points highlight origin and destination facilities, and an interactive dropdown lets viewers filter between canine, feline, or all transfer routes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 2: Canine Genetics and Longevity -->
+    <section class="section-block" id="part-2">
+      <div class="section-header">
+        <div class="section-eyebrow">Part 2 &bull; Canine Genetics &amp; Biology</div>
+        <h2 class="section-title">The Size Paradox: Why Small Dogs Live Longer Than Giants</h2>
+        <p class="section-desc">
+          In most animals, larger species outlive smaller ones (elephants outlive mice). Domestic dogs are a major exception: giant breeds live barely one-third the lifespan of toy breeds. Here is what biometrics from 156 breeds show.
+        </p>
+      </div>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">&#9432; The Biological Cost of Fast Growth: r = -0.76 Correlation</div>
+        Canine body mass is strongly inversely correlated with lifespan (r = -0.76). Giant breeds multiply their birth weight by up to 100 times in their first year. This accelerated cellular growth causes earlier biological wear and premature onset of degenerative diseases.
+      </div>
+
+      <!-- Chart 4: Body weight vs lifespan jitter plot -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Jitter Plot</span>
+          <h3>4. Adult Dog Body Weight vs. Median Lifespan (156 Breeds)</h3>
+          <p class="subtitle">Canine body weight is strongly inversely correlated with lifespan (r = -0.76); heavier breeds age significantly faster.</p>
+        </div>
+
+        <div id="chart-act2-jitter" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Use the dropdown to filter by breed group. Hover over any breed for adult weight and median lifespan.</span>
+          <span class="source">Source: McMillan et al., Nature Scientific Reports (2024, n = 584,734)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Biometric data from 156 dog breeds (584,734 dogs). Attributes: adult weight in kg, median lifespan in years, breed group, and sample size.</p>
+          <p><strong>Why:</strong> Explore the canine size–longevity paradox: why small dogs outlive giant dogs, breaking the normal rule across the animal kingdom.</p>
+          <p><strong>How:</strong> Scatter plot with sine-wave vertical jitter to reduce point overlap, overlaid with a polynomial regression curve and interactive breed group filtering.</p>
+        </div>
+      </div>
+
+      <p>
+        Beyond weight alone, what a breed was originally bred to do plays a major role. Breeds in the Working and Guardian groups were selected for heavy frames and mass, and exhibit the shortest lifespans. Terriers and Toy breeds, bred for agility or companionship, consistently live the longest.
+      </p>
+
+      <!-- Chart 5: Breed group ranges connected dot plot -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Connected Dot Plot</span>
+          <h3>5. Lifespan Ranges Across Kennel Club Breed Groups</h3>
+          <p class="subtitle">Working breeds have the lowest median lifespans, while Terriers and Toy breeds live the longest.</p>
+        </div>
+
+        <div id="chart-act2-connected-dot" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Red dot = shortest-lived breed; Blue diamond = group median; Green dot = longest-lived breed.</span>
+          <span class="source">Source: McMillan et al., Nature Scientific Reports (2024) & AKC Biometrics</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Lifespan statistics aggregated by AKC breed group. Attributes: minimum lifespan, maximum lifespan, and group median.</p>
+          <p><strong>Why:</strong> Compare lifespan spread across breed groups to show how historical working purposes affected canine longevity.</p>
+          <p><strong>How:</strong> Horizontal rules connecting minimum and maximum lifespans for each breed group, with distinct dots for extremes and diamonds for medians.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-rose">
+        <div class="callout-title">&#9888; A 10-Year Lifespan Divide: Lancashire Heeler vs. Caucasian Shepherd</div>
+        The <strong>Lancashire Heeler lives a median of 15.4 years</strong>, while the <strong>Caucasian Shepherd Dog survives a median of just 5.4 years</strong>. Prospective owners of giant guardian breeds should expect senior health management before their dog turns five.
+      </div>
+
+      <!-- Chart 6: Top and bottom 10 breeds lollipop chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Lollipop Chart</span>
+          <h3>6. The 10 Longest-Lived and 10 Shortest-Lived Dog Breeds</h3>
+          <p class="subtitle">A 10-year gap separates the longest-lived breed (Lancashire Heeler, 15.4 yrs) from the shortest (Caucasian Shepherd, 5.4 yrs).</p>
+        </div>
+
+        <div id="chart-act2-lollipop" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Green markers show the Top 10 longest-lived breeds; red markers show the 10 shortest-lived breeds.</span>
+          <span class="source">Source: McMillan et al., Nature Scientific Reports (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> The 10 longest-lived and 10 shortest-lived dog breeds. Attributes: breed name (nominal), median lifespan in years (quantitative), and longevity standing.</p>
+          <p><strong>Why:</strong> Highlight the extreme 10-year gap between extremes, giving prospective owners realistic expectations before choosing a giant breed.</p>
+          <p><strong>How:</strong> Horizontal rule stems starting from zero with circle endpoints at the exact median lifespan, colored by group (green vs red) and ranked descending.</p>
+        </div>
+      </div>
+
+      <p>
+        How does dog longevity compare with other popular companion animals in Australia? While dogs and cats get the most attention, companion birds, horses, and indoor cats often live decades longer, requiring significantly longer care commitments.
+      </p>
+
+      <!-- Chart 7: Companion species bar chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Grouped Bar Chart</span>
+          <h3>7. Comparative Lifespans and Annual Vet Costs Across Companion Species</h3>
+          <p class="subtitle">Horses, parrots, and cats outlive dogs, but require multi-decade care commitments and varying annual vet expenses.</p>
+        </div>
+
+        <div id="chart-act2-species-bar" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Bars show median lifespan; error bars indicate species lifespan range. Hover for annual vet costs.</span>
+          <span class="source">Source: Animal Medicines Australia (2024) & Comparative Veterinary Gerontology</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Longevity and expense data for 6 companion animal species. Attributes: median lifespan, minimum/maximum lifespan range, and average annual vet cost in AUD.</p>
+          <p><strong>Why:</strong> Put canine lifespans into perspective against other pets, showing that birds and horses require much longer ownership commitments.</p>
+          <p><strong>How:</strong> Vertical bar marks for median lifespan, overlaid with min-max error bars with end caps. Color differentiates species, and tooltips show annual vet costs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 3: Pathology & Healthcare Costs -->
+    <section class="section-block" id="part-3">
+      <div class="section-header">
+        <div class="section-eyebrow">Part 3 &bull; Pathology &amp; Healthcare Costs</div>
+        <h2 class="section-title">Aging &amp; Illness: What Breaks Down First (and What It Costs)</h2>
+        <p class="section-desc">
+          Aging companion animals do not experience illness in the same way. A dog's size class determines which organs fail first, creating distinct medical needs and substantial veterinary costs for Australian pet owners.
+        </p>
+      </div>
+
+      <div class="callout callout-amber">
+        <div class="callout-title">&#9888; Body Size Dictates Illness: Dental Disease (88%) vs. Osteoarthritis (76%)</div>
+        Small dogs predominantly suffer from <strong>periodontal dental disease (88%)</strong> and heart valve issues. In contrast, large and giant dogs suffer primarily from <strong>osteoarthritis (76%)</strong> and aggressive cancers such as osteosarcoma and lymphoma.
+      </div>
+
+      <!-- Chart 8: Disease prevalence heatmap -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Heatmap</span>
+          <h3>8. Chronic Disease Prevalence Across Dog Size Categories</h3>
+          <p class="subtitle">Small dogs predominantly suffer dental disease (88%), while giant breeds suffer osteoarthritis (76%) and bone cancer.</p>
+        </div>
+
+        <div id="chart-act3-disease-heatmap" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Color intensity and numbers show diagnosed prevalence (%) in senior pets (age 7+).</span>
+          <span class="source">Source: Australian Veterinary Association (AVA) & VetCompass (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Prevalence rates of 8 chronic conditions across 4 dog size classes. Attributes: size class (ordinal), condition (nominal), and prevalence percentage (quantitative).</p>
+          <p><strong>Why:</strong> Show that illness patterns are size-dependent, helping owners anticipate condition risks based on their dog's adult weight.</p>
+          <p><strong>How:</strong> 2D rectangular matrix with cell color mapped to prevalence percentage using an orange-red heat scale, with dynamic contrast text labels.</p>
+        </div>
+      </div>
+
+      <p>
+        Managing chronic conditions and routine preventive care requires steady financial investment. Australian dog owners spend an average of <strong>$1,650 AUD annually</strong> on veterinary healthcare, with dental work and chronic medication forming the largest ongoing categories.
+      </p>
+
+      <!-- Chart 9: Vet spending treemap -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Treemap</span>
+          <h3>9. Where Pet Healthcare Dollars Go: Annual Australian Veterinary Spend</h3>
+          <p class="subtitle">Dental care and chronic medications make up 43% of total veterinary costs, surpassing routine vaccinations.</p>
+        </div>
+
+        <div id="chart-act3-spending-treemap" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Tile width shows annual spend (AUD); color indicates the top-level expenditure category.</span>
+          <span class="source">Source: Animal Medicines Australia (AMA) Veterinary Economic Report (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Breakdown of annual veterinary expenditures across 5 main categories and 10 subcategories. Attributes: category, subcategory, and annual spend in AUD.</p>
+          <p><strong>Why:</strong> Illustrate where pet healthcare money actually goes, showing that ongoing chronic care outweighs routine vaccinations.</p>
+          <p><strong>How:</strong> Faceted nested horizontal tiles sized proportionally to dollar spend, grouped by category and colored by top-level expense type.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-emerald">
+        <div class="callout-title">&#10003; Female Survival Advantage: Female Dogs Live 0.5 Years Longer</div>
+        Clinical records from 584,734 dogs show that <strong>female dogs maintain a consistent 0.5-year survival advantage over males</strong> throughout adulthood. Between ages 10 and 15, female survival probability remains 4 to 7 percentage points higher across all breed groups.
+      </div>
+
+      <!-- Chart 10: Survival curves by sex line chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Line Chart</span>
+          <h3>10. Canine Survival Probabilities Across Life Stages by Sex</h3>
+          <p class="subtitle">Female dogs maintain a consistent 0.5-year survival advantage over males across their entire lifespan.</p>
+        </div>
+
+        <div id="chart-act3-survival-curve" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Purple = female survival curve; Blue = male survival curve. Shaded areas show 95% confidence intervals.</span>
+          <span class="source">Source: McMillan et al., Nature Scientific Reports (2024, n = 584,734)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Survival probability curves from age 0 to 18 for male and female dogs. Attributes: age in decimal years, sex, survival probability, and 95% confidence intervals.</p>
+          <p><strong>Why:</strong> Trace age-dependent mortality trajectories and demonstrate the consistent biological longevity advantage of female dogs.</p>
+          <p><strong>How:</strong> Dual line marks colored by sex (purple for females, blue for males) overlaid on semi-transparent 95% confidence bands, with a dashed reference line at median lifespan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Part 4: Preventive Care & Owner Decisions -->
+    <section class="section-block" id="part-4">
+      <div class="section-header">
+        <div class="section-eyebrow">Part 4 &bull; Preventive Care &amp; Lifestyle</div>
+        <h2 class="section-title">What Owners Can Control: Habits That Add Years</h2>
+        <p class="section-desc">
+          Genetics set a biological ceiling for animal longevity, but human ownership decisions determine whether a pet reaches that potential. Routine veterinary habits and keeping cats indoors are the two most effective interventions available.
+        </p>
+      </div>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">&#9432; The Preventive Care Gap: 72% Vaccinate, but Only 28% Provide Dental Care</div>
+        While 72% of Australian pets receive regular vaccinations, <strong>only 28% receive professional annual dental scaling</strong>. Because periodontal bacteria enter the bloodstream and damage kidneys and heart valves, dental neglect is a major cause of preventable decline.
+      </div>
+
+      <!-- Chart 11: Preventive care waffle chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Waffle Chart</span>
+          <h3>11. Preventive Care Adoption Across Australian Pet Owners</h3>
+          <p class="subtitle">While 72% of pets are vaccinated and 85% microchipped, only 28% receive regular preventive dental care.</p>
+        </div>
+
+        <div id="chart-act4-waffle" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Each square represents 1% of the Australian pet population (~287,000 pets).</span>
+          <span class="source">Source: Animal Medicines Australia (AMA) National Pet Survey (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Adoption rates for 6 key preventive veterinary habits. Each unit square in the 10×10 grid represents 1% of Australian pets (~287,000 animals).</p>
+          <p><strong>Why:</strong> Expose gaps in preventive pet care: most owners vaccinate and microchip, but few provide dental care, leading to preventable organ disease.</p>
+          <p><strong>How:</strong> 10×10 grid of unit squares colored by habit category, with interactive hover highlighting and tooltips showing national adoption percentages.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-rose">
+        <div class="callout-title">&#9888; The 10-Year Cat Lifespan Gap: Indoor (14.5 yrs) vs. Outdoor (4.5 yrs)</div>
+        In Australia, <strong>free-roaming outdoor cats live a median of just 4.5 years</strong> due to car collisions, dog attacks, and viral infections (FIV, FeLV). In contrast, <strong>indoor cats reach a median of 14.5 years</strong>, dying naturally of old age and senior organ decline.
+      </div>
+
+      <!-- Chart 12: Indoor vs outdoor cats butterfly chart -->
+      <div class="card">
+        <div class="card-header">
+          <span class="badge badge-blue">Butterfly Chart</span>
+          <h3>12. Mortality Causes: Free-Roaming Outdoor Cats vs. Indoor Cats</h3>
+          <p class="subtitle">Outdoor cats live a median of 4.5 years due to vehicle trauma and disease, whereas indoor cats reach 14.5 years.</p>
+        </div>
+
+        <div id="chart-act4-cat-pyramid" class="chart"></div>
+
+        <div class="chart-footer">
+          <span>Left (amber) = outdoor cat mortality distribution; Right (teal) = indoor cat mortality distribution.</span>
+          <span class="source">Source: Australian Veterinary Journal Feline Lifespan Study (2024)</span>
+        </div>
+
+        <div class="munzner-box">
+          <p><strong>What:</strong> Causes of mortality and median lifespans for indoor vs outdoor cats across 7 death causes. Attributes: mortality percentage and median lifespan.</p>
+          <p><strong>Why:</strong> Demonstrate the 10-year lifespan gap between indoor and outdoor cats, showing that trauma and disease kill outdoor cats prematurely.</p>
+          <p><strong>How:</strong> Mirrored horizontal bar chart with outdoor causes extending left (amber) and indoor causes extending right (teal) from a central dashed zero line.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer: Citations and Student Metadata -->
+    <footer class="dashboard-footer">
+
+      <!-- Data citations -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <h4 style="margin-top: 0; margin-bottom: 0.75rem;">Data Sources &amp; References</h4>
+        <ol class="citation-list">
+          <li><strong>RSPCA Australia (2025):</strong> <em>National Animal Shelter Statistics Report 2024–2025</em>. Admissions, intake per capita, and rehoming outcomes across all Australian states and territories.</li>
+          <li><strong>McMillan, K. M., Bielby, J., Cary, C. L., et al. (2024):</strong> <em>Longevity and mortality in companion dogs: an analysis of 584,734 individuals in the UK</em>. Nature Scientific Reports, 14(1), 2420. DOI: 10.1038/s41598-024-54977-0.</li>
+          <li><strong>Animal Medicines Australia (AMA) (2024):</strong> <em>Pets in Australia: A national survey of pets and people (2024 Edition)</em>. Companion animal population counts, preventive adoption percentages, and annual veterinary expenditures.</li>
+          <li><strong>Australian Bureau of Statistics (ABS) (2024):</strong> <em>National, State and Territory Population (Cat. 3101.0, Release Dec 2024)</em>. Commonwealth of Australia.</li>
+          <li><strong>Australian Veterinary Association (AVA) &amp; Royal Veterinary College VetCompass (2024):</strong> <em>Canine and Feline Morbidity and Mortality Surveillance Reports</em>.</li>
+        </ol>
+      </div>
+
+      <!-- Student info & footer note -->
+      <div class="copyright-bar">
+        <p>
+          Monash University FIT3179 &bull; Data Visualisation 2 &bull; Authored by <strong>Kenneth Ee (Student ID: 33118228)</strong> &bull; October 2026<br>
+          Built with Pure.css, Google Fonts, and Vega-Lite v5. Hosted on GitHub Pages.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Embed Vega charts -->
+  <script>
+    // Embed configuration with Cendre dark theme
+    const embedOptions = {
+      actions: false,
+      renderer: 'svg',
+      tooltip: { theme: 'custom' },
+      config: {
+        background: 'transparent',
+        view: { stroke: 'transparent' },
+        axis: {
+          domainColor: '#362f2c',
+          gridColor: 'rgba(230, 213, 194, 0.06)',
+          tickColor: '#362f2c',
+          labelColor: '#96887a',
+          titleColor: '#e6d5c2',
+          labelFont: 'Inter, sans-serif',
+          titleFont: 'Plus Jakarta Sans, sans-serif'
+        },
+        legend: {
+          labelColor: '#96887a',
+          titleColor: '#e6d5c2',
+          labelFont: 'Inter, sans-serif',
+          titleFont: 'Plus Jakarta Sans, sans-serif'
+        },
+        title: {
+          color: '#f2e8dc',
+          subtitleColor: '#96887a',
+          font: 'Plus Jakarta Sans, sans-serif'
+        }
+      }
+    };
+
+    // Chart definitions mapping container IDs to Vega-Lite JSON specifications
+    const charts = [
+      { id: '#chart-act1-choropleth', spec: 'js/charts/act1_choropleth.vg.json' },
+      { id: '#chart-act1-symbol-map', spec: 'js/charts/act1_symbol_map.vg.json' },
+      { id: '#chart-act1-flow-map', spec: 'js/charts/act1_flow_map.vg.json' },
+      { id: '#chart-act2-jitter', spec: 'js/charts/act2_jitter_plot.vg.json' },
+      { id: '#chart-act2-connected-dot', spec: 'js/charts/act2_connected_dot.vg.json' },
+      { id: '#chart-act2-lollipop', spec: 'js/charts/act2_lollipop.vg.json' },
+      { id: '#chart-act2-species-bar', spec: 'js/charts/act2_species_bar.vg.json' },
+      { id: '#chart-act3-disease-heatmap', spec: 'js/charts/act3_disease_heatmap.vg.json' },
+      { id: '#chart-act3-spending-treemap', spec: 'js/charts/act3_spending_treemap.vg.json' },
+      { id: '#chart-act3-survival-curve', spec: 'js/charts/act3_survival_curve.vg.json' },
+      { id: '#chart-act4-waffle', spec: 'js/charts/act4_waffle_chart.vg.json' },
+      { id: '#chart-act4-cat-pyramid', spec: 'js/charts/act4_cat_pyramid.vg.json' }
+    ];
+
+    // Embed all charts with error handling
+    charts.forEach(chart => {
+      vegaEmbed(chart.id, chart.spec, embedOptions)
+        .then(result => {
+          console.log(`[Vega] Embedded ${chart.spec} into ${chart.id}`);
+        })
+        .catch(error => {
+          console.error(`[Vega Error] Failed to embed ${chart.spec}:`, error);
+          const container = document.querySelector(chart.id);
+          if (container) {
+            container.innerHTML = `
+              <div style="padding: 1.5rem; text-align: center; color: #d1766e; background: rgba(209, 118, 110, 0.1); border: 1px solid rgba(209, 118, 110, 0.3);">
+                <strong>Unable to load visualization:</strong> ${chart.spec}<br>
+                <small style="color: #96887a;">Please ensure local web server is running (CORS security restriction).</small>
+              </div>
+            `;
+          }
+        });
+    });
+  </script>
+</body>
+</html>

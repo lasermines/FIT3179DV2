@@ -1,0 +1,7 @@
+species,min_lifespan,max_lifespan,median_lifespan,avg_annual_vet_cost_aud,category
+Dog,7.0,16.0,12.0,1200,Canine
+Cat,10.0,18.0,14.5,850,Feline
+Rabbit,6.0,12.0,9.0,450,Small Mammal
+Guinea Pig,4.0,8.0,5.5,280,Small Mammal
+Cockatiel/Parrot,12.0,25.0,18.0,220,Avian
+Horse,20.0,35.0,28.0,2400,Equine

@@ -1,0 +1,33 @@
+size_class,condition,prevalence_pct
+Small (<10 kg),Dental Disease,68.5
+Small (<10 kg),Brachycephalic Airway Syndrome,36.2
+Small (<10 kg),Obesity,34.8
+Small (<10 kg),Heart Disease,31.4
+Small (<10 kg),Renal Disease,24.1
+Small (<10 kg),Osteoarthritis,14.2
+Small (<10 kg),Cancer/Neoplasia,12.5
+Small (<10 kg),Hip Dysplasia,3.8
+Medium (10-25 kg),Dental Disease,42.0
+Medium (10-25 kg),Obesity,38.2
+Medium (10-25 kg),Brachycephalic Airway Syndrome,28.4
+Medium (10-25 kg),Osteoarthritis,24.8
+Medium (10-25 kg),Cancer/Neoplasia,19.8
+Medium (10-25 kg),Heart Disease,18.2
+Medium (10-25 kg),Renal Disease,17.5
+Medium (10-25 kg),Hip Dysplasia,14.6
+Large (25-45 kg),Osteoarthritis,48.6
+Large (25-45 kg),Hip Dysplasia,38.5
+Large (25-45 kg),Cancer/Neoplasia,38.2
+Large (25-45 kg),Obesity,32.4
+Large (25-45 kg),Dental Disease,28.4
+Large (25-45 kg),Heart Disease,22.5
+Large (25-45 kg),Renal Disease,15.2
+Large (25-45 kg),Brachycephalic Airway Syndrome,11.5
+Giant (>45 kg),Osteoarthritis,64.2
+Giant (>45 kg),Hip Dysplasia,52.4
+Giant (>45 kg),Cancer/Neoplasia,47.5
+Giant (>45 kg),Heart Disease,38.9
+Giant (>45 kg),Obesity,22.1
+Giant (>45 kg),Dental Disease,19.2
+Giant (>45 kg),Renal Disease,14.0
+Giant (>45 kg),Brachycephalic Airway Syndrome,4.2

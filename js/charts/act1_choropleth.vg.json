@@ -1,0 +1,229 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 750,
+  "height": 480,
+  "projection": {
+    "type": "equirectangular",
+    "center": [
+      133.5,
+      -27.5
+    ],
+    "scale": 640
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states_named.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "austates"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "data/australia_state_pet_welfare_summary_2024_2025.csv"
+            },
+            "key": "state_name",
+            "fields": [
+              "state",
+              "state_name",
+              "population",
+              "dogs_received",
+              "cats_received",
+              "total_pets_received",
+              "dogs_rehomed",
+              "cats_rehomed",
+              "total_pets_rehomed",
+              "dogs_euthanased",
+              "cats_euthanased",
+              "total_pets_euthanased",
+              "intake_per_10k_pop",
+              "rehome_rate_pct",
+              "euthanasia_rate_pct"
+            ]
+          }
+        }
+      ],
+      "params": [
+        {
+          "name": "state_hover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#171311",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "color": {
+          "field": "intake_per_10k_pop",
+          "type": "quantitative",
+          "title": "Shelter Intake per 10,000 Residents",
+          "scale": {
+            "type": "threshold",
+            "domain": [
+              5,
+              15,
+              30,
+              60,
+              150
+            ],
+            "scheme": "purples"
+          },
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "padding": 12
+          }
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "state_hover",
+            "empty": false,
+            "value": 2.5
+          },
+          "value": 1.2
+        },
+        "stroke": {
+          "condition": {
+            "param": "state_hover",
+            "empty": false,
+            "value": "#f2e8dc"
+          },
+          "value": "#362f2c"
+        },
+        "tooltip": [
+          {
+            "field": "properties.STATE_NAME",
+            "type": "nominal",
+            "title": "State / Territory"
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Human Population"
+          },
+          {
+            "field": "intake_per_10k_pop",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Intake per 10k Residents"
+          },
+          {
+            "field": "total_pets_received",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Total Pets Received"
+          },
+          {
+            "field": "dogs_received",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Dogs Received"
+          },
+          {
+            "field": "cats_received",
+            "type": "quantitative",
+            "format": ",",
+            "title": "Cats Received"
+          },
+          {
+            "field": "rehome_rate_pct",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Rehome Rate (%)"
+          },
+          {
+            "field": "euthanasia_rate_pct",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Euthanasia Rate (%)"
+          }
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_state_pet_welfare_summary_2024_2025.csv"
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "dx": {
+          "expr": "datum.state === 'ACT' ? 24 : 0"
+        },
+        "dy": {
+          "expr": "datum.state === 'ACT' ? -4 : 0"
+        },
+        "align": {
+          "expr": "datum.state === 'ACT' ? 'left' : 'center'"
+        }
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "state",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.state === 'NT'",
+            "value": "#ffffff"
+          },
+          "value": "#e2e8f0"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

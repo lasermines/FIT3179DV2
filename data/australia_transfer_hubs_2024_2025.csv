@@ -1,0 +1,17 @@
+hub_name,state,lon,lat,role,traffic_volume,dx,dy,align
+Darwin,NT,130.8456,-12.4634,Surplus Origin Shelter,157,0,-14,center
+Alice Springs,NT,133.8807,-23.698,Surplus Origin Shelter,45,12,-2,left
+Townsville,QLD,146.8169,-19.259,Surplus Origin Shelter,122,12,-4,left
+Rockhampton,QLD,150.51,-23.3791,Surplus Origin Shelter,28,12,0,left
+Brisbane,QLD,153.0251,-27.4698,Adoption Destination Hub,80,12,0,left
+Kalgoorlie,WA,121.466,-30.749,Surplus Origin Shelter,119,0,-14,center
+Perth,WA,115.8605,-31.9505,Adoption Destination Hub,119,-12,2,right
+Port Augusta,SA,137.7628,-32.4935,Surplus Origin Shelter,107,-12,-8,right
+Adelaide,SA,138.6007,-34.9285,Adoption Destination Hub,152,-12,8,right
+Mildura,VIC,142.1583,-34.1847,Surplus Origin Shelter,240,12,-6,left
+Dubbo,NSW,148.6011,-32.2437,Surplus Origin Shelter,107,-12,-6,right
+Canberra,ACT,149.13,-35.2809,Adoption Destination Hub,28,-12,8,right
+Sydney,NSW,151.2093,-33.8688,Adoption Destination Hub,171,12,-4,left
+Melbourne,VIC,144.9631,-37.8136,Adoption Destination Hub,375,-14,-6,right
+Burnie,TAS,145.908,-41.0558,Surplus Origin Shelter,60,-12,4,right
+Hobart,TAS,147.3272,-42.8821,Adoption Destination Hub,60,12,8,left

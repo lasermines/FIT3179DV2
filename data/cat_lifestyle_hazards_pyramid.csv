@@ -1,0 +1,15 @@
+cause_of_mortality,lifestyle,percentage,median_lifespan_years
+Traffic Trauma / Vehicle,Indoor,0.8,4.2
+Infectious Disease (FIV/FeLV),Indoor,2.1,6.8
+Fight/Animal Attack,Indoor,0.5,5.0
+Toxins/Poisoning,Indoor,3.4,7.5
+Renal/Organ Failure,Indoor,28.5,15.0
+Neoplasia/Cancer,Indoor,22.4,14.8
+Old Age/Natural,Indoor,42.3,16.5
+Traffic Trauma / Vehicle,Outdoor,34.6,3.5
+Infectious Disease (FIV/FeLV),Outdoor,18.2,5.1
+Fight/Animal Attack,Outdoor,14.4,4.8
+Toxins/Poisoning,Outdoor,11.5,4.0
+Renal/Organ Failure,Outdoor,8.2,9.5
+Neoplasia/Cancer,Outdoor,5.3,10.2
+Old Age/Natural,Outdoor,7.8,12.0

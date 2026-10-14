@@ -1,0 +1,319 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 380,
+  "data": {
+    "url": "data/dog_breeds_longevity_and_biometrics_2024.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "median_lifespan": "number",
+        "avg_weight_kg": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum.breed_group != null && isValid(datum.median_lifespan) && datum.breed_group != 'Crossbreed' && datum.breed_group != 'Foundation Stock Service' && datum.breed_group != 'Miscellaneous Class' && datum.breed_group != 'Other'"
+    },
+    {
+      "aggregate": [
+        {
+          "op": "min",
+          "field": "median_lifespan",
+          "as": "min_lifespan"
+        },
+        {
+          "op": "max",
+          "field": "median_lifespan",
+          "as": "max_lifespan"
+        },
+        {
+          "op": "median",
+          "field": "median_lifespan",
+          "as": "group_median_lifespan"
+        },
+        {
+          "op": "argmin",
+          "field": "median_lifespan",
+          "as": "min_record"
+        },
+        {
+          "op": "argmax",
+          "field": "median_lifespan",
+          "as": "max_record"
+        },
+        {
+          "op": "count",
+          "as": "breed_count"
+        }
+      ],
+      "groupby": [
+        "breed_group"
+      ]
+    },
+    {
+      "calculate": "datum.min_record.breed",
+      "as": "shortest_lived_breed"
+    },
+    {
+      "calculate": "datum.max_record.breed",
+      "as": "longest_lived_breed"
+    },
+    {
+      "calculate": "round((datum.max_lifespan - datum.min_lifespan) * 10) / 10",
+      "as": "lifespan_span"
+    },
+    {
+      "calculate": "'Δ ' + format(datum.lifespan_span, '.1f') + ' yrs'",
+      "as": "span_label"
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "breed_group",
+      "type": "nominal",
+      "title": "Breed Classification Group",
+      "sort": {
+        "field": "group_median_lifespan",
+        "order": "descending"
+      },
+      "axis": {
+        "titleFontSize": 12,
+        "titleFontWeight": 600,
+        "labelFontSize": 11,
+        "tickColor": "#362f2c",
+        "domainColor": "#362f2c"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#362f2c",
+        "strokeWidth": 4,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_lifespan",
+          "type": "quantitative",
+          "title": "Lifespan (Years)",
+          "scale": {
+            "domain": [
+              7,
+              16.5
+            ]
+          },
+          "axis": {
+            "gridColor": "rgba(230, 213, 194, 0.06)",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "tickColor": "#362f2c",
+            "domainColor": "#362f2c"
+          }
+        },
+        "x2": {
+          "field": "max_lifespan"
+        },
+        "tooltip": [
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "shortest_lived_breed",
+            "type": "nominal",
+            "title": "Shortest-Lived Breed"
+          },
+          {
+            "field": "min_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Min Lifespan (Years)"
+          },
+          {
+            "field": "longest_lived_breed",
+            "type": "nominal",
+            "title": "Longest-Lived Breed"
+          },
+          {
+            "field": "max_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Max Lifespan (Years)"
+          },
+          {
+            "field": "lifespan_span",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Lifespan Span (Years)"
+          },
+          {
+            "field": "group_median_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Group Median (Years)"
+          },
+          {
+            "field": "breed_count",
+            "type": "quantitative",
+            "title": "Breeds Analyzed"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130,
+        "color": "#ef4444"
+      },
+      "encoding": {
+        "x": {
+          "field": "min_lifespan",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "shortest_lived_breed",
+            "type": "nominal",
+            "title": "Shortest-Lived Breed"
+          },
+          {
+            "field": "min_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Minimum Lifespan (Years)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 130,
+        "color": "#10b981"
+      },
+      "encoding": {
+        "x": {
+          "field": "max_lifespan",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "longest_lived_breed",
+            "type": "nominal",
+            "title": "Longest-Lived Breed"
+          },
+          {
+            "field": "max_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Maximum Lifespan (Years)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "filled": true,
+        "size": 160,
+        "color": "#2563eb"
+      },
+      "encoding": {
+        "x": {
+          "field": "group_median_lifespan",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {
+            "field": "breed_group",
+            "type": "nominal",
+            "title": "Breed Group"
+          },
+          {
+            "field": "group_median_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Group Median Lifespan (Years)"
+          },
+          {
+            "field": "breed_count",
+            "type": "quantitative",
+            "title": "Breeds Analyzed"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#96887a"
+      },
+      "encoding": {
+        "x": {
+          "field": "max_lifespan",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "span_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

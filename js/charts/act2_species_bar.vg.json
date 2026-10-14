@@ -1,0 +1,231 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 400,
+  "data": {
+    "url": "data/species_longevity_comparison.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "min_lifespan",
+        "median_lifespan",
+        "max_lifespan"
+      ],
+      "as": [
+        "metric_raw",
+        "lifespan_years"
+      ]
+    },
+    {
+      "calculate": "datum.metric_raw === 'min_lifespan' ? 'Minimum Lifespan' : datum.metric_raw === 'median_lifespan' ? 'Median Lifespan' : 'Maximum Lifespan'",
+      "as": "metric_name"
+    },
+    {
+      "calculate": "datum.min_lifespan + ' – ' + datum.max_lifespan + ' years'",
+      "as": "typical_range"
+    },
+    {
+      "calculate": "'$' + datum.avg_annual_vet_cost_aud + ' AUD'",
+      "as": "vet_cost_formatted"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusTopLeft": 4,
+        "cornerRadiusTopRight": 4,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "species",
+          "type": "nominal",
+          "sort": [
+            "Horse",
+            "Cockatiel/Parrot",
+            "Cat",
+            "Dog",
+            "Rabbit",
+            "Guinea Pig"
+          ],
+          "title": "Companion Animal Species",
+          "axis": {
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "labelFontWeight": 500,
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1"
+          }
+        },
+        "xOffset": {
+          "field": "metric_name",
+          "sort": [
+            "Minimum Lifespan",
+            "Median Lifespan",
+            "Maximum Lifespan"
+          ]
+        },
+        "y": {
+          "field": "lifespan_years",
+          "type": "quantitative",
+          "title": "Lifespan (Years)",
+          "scale": {
+            "domain": [
+              0,
+              38
+            ]
+          },
+          "axis": {
+            "gridColor": "#f1f5f9",
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1"
+          }
+        },
+        "color": {
+          "field": "metric_name",
+          "type": "nominal",
+          "title": "Lifespan Metric",
+          "scale": {
+            "domain": [
+              "Minimum Lifespan",
+              "Median Lifespan",
+              "Maximum Lifespan"
+            ],
+            "range": [
+              "#93c5fd",
+              "#3b82f6",
+              "#1e3a8a"
+            ]
+          },
+          "legend": {
+            "orient": "top-right",
+            "fillColor": "rgba(255, 255, 255, 0.94)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#e2e8f0",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {
+            "field": "species",
+            "type": "nominal",
+            "title": "Species"
+          },
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Animal Group"
+          },
+          {
+            "field": "metric_name",
+            "type": "nominal",
+            "title": "Metric"
+          },
+          {
+            "field": "lifespan_years",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Lifespan (Years)"
+          },
+          {
+            "field": "typical_range",
+            "type": "nominal",
+            "title": "Typical Range"
+          },
+          {
+            "field": "median_lifespan",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Median Lifespan (Years)"
+          },
+          {
+            "field": "vet_cost_formatted",
+            "type": "nominal",
+            "title": "Avg Annual Vet Cost (AUD)"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -8,
+        "fontSize": 10,
+        "fontWeight": 600,
+        "color": "#96887a"
+      },
+      "encoding": {
+        "x": {
+          "field": "species",
+          "type": "nominal",
+          "sort": [
+            "Horse",
+            "Cockatiel/Parrot",
+            "Cat",
+            "Dog",
+            "Rabbit",
+            "Guinea Pig"
+          ]
+        },
+        "xOffset": {
+          "field": "metric_name",
+          "sort": [
+            "Minimum Lifespan",
+            "Median Lifespan",
+            "Maximum Lifespan"
+          ]
+        },
+        "y": {
+          "field": "lifespan_years",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "lifespan_years",
+          "type": "quantitative",
+          "format": ".0f"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

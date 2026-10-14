@@ -1,0 +1,228 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 680,
+  "height": 450,
+  "data": {
+    "url": "data/breed_size_disease_matrix.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.condition === 'Dental Disease' ? 'High risk of periodontal disease, tooth root abscesses & systemic bacteremia' : datum.condition === 'Brachycephalic Airway Syndrome' ? 'Severe upper airway stenosis, heat intolerance & respiratory distress' : datum.condition === 'Obesity' ? 'Chronic systemic inflammation, metabolic dysfunction & accelerated joint load' : datum.condition === 'Heart Disease' ? 'Degenerative mitral valve disease (small) & dilated cardiomyopathy (large/giant)' : datum.condition === 'Renal Disease' ? 'Progressive loss of functional nephrons and urinary excretion capacity' : datum.condition === 'Osteoarthritis' ? 'Degenerative joint cartilage wear causing chronic pain & restricted mobility' : datum.condition === 'Cancer/Neoplasia' ? 'Leading mortality cause in large/giant dogs (lymphoma, osteosarcoma, hemangiosarcoma)' : 'Developmental joint laxity and femoral head subluxation causing crippling arthritis'",
+      "as": "clinical_significance"
+    },
+    {
+      "calculate": "format(datum.prevalence_pct, '.1f') + '%'",
+      "as": "prevalence_label"
+    },
+    {
+      "calculate": "datum.prevalence_pct > 32 ? '#ffffff' : '#171311'",
+      "as": "contrast_color"
+    }
+  ],
+  "layer": [
+    {
+      "params": [
+        {
+          "name": "cell_hover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 0,
+        "stroke": "#171311",
+        "strokeWidth": 2.5,
+        "cursor": "pointer"
+      },
+      "encoding": {
+        "x": {
+          "field": "size_class",
+          "type": "nominal",
+          "sort": [
+            "Small (<10 kg)",
+            "Medium (10-25 kg)",
+            "Large (25-45 kg)",
+            "Giant (>45 kg)"
+          ],
+          "title": "Canine Adult Size Classification",
+          "axis": {
+            "labelAngle": 0,
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1"
+          }
+        },
+        "y": {
+          "field": "condition",
+          "type": "nominal",
+          "sort": [
+            "Dental Disease",
+            "Osteoarthritis",
+            "Obesity",
+            "Cancer/Neoplasia",
+            "Heart Disease",
+            "Hip Dysplasia",
+            "Brachycephalic Airway Syndrome",
+            "Renal Disease"
+          ],
+          "title": "Diagnosed Health Condition",
+          "axis": {
+            "titleFontSize": 12,
+            "titleFontWeight": 600,
+            "labelFontSize": 11,
+            "tickColor": "#cbd5e1",
+            "domainColor": "#cbd5e1"
+          }
+        },
+        "color": {
+          "field": "prevalence_pct",
+          "type": "quantitative",
+          "title": "Prevalence (%)",
+          "scale": {
+            "type": "linear",
+            "range": [
+              "#fef2f2",
+              "#fee2e2",
+              "#fca5a5",
+              "#f87171",
+              "#ef4444",
+              "#b91c1c",
+              "#7f1d1d"
+            ]
+          },
+          "legend": {
+            "orient": "right",
+            "titleFontSize": 11,
+            "titleFontWeight": 600,
+            "labelFontSize": 10,
+            "gradientLength": 240,
+            "gradientThickness": 12,
+            "cornerRadius": 0,
+            "padding": 12
+          }
+        },
+        "stroke": {
+          "condition": {
+            "param": "cell_hover",
+            "empty": false,
+            "value": "#f2e8dc"
+          },
+          "value": "#171311"
+        },
+        "strokeWidth": {
+          "condition": {
+            "param": "cell_hover",
+            "empty": false,
+            "value": 3
+          },
+          "value": 2
+        },
+        "tooltip": [
+          {
+            "field": "size_class",
+            "type": "nominal",
+            "title": "Size Class"
+          },
+          {
+            "field": "condition",
+            "type": "nominal",
+            "title": "Health Condition"
+          },
+          {
+            "field": "prevalence_pct",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Prevalence (%)"
+          },
+          {
+            "field": "clinical_significance",
+            "type": "nominal",
+            "title": "Clinical Significance"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "fontWeight": 700
+      },
+      "encoding": {
+        "x": {
+          "field": "size_class",
+          "type": "nominal",
+          "sort": [
+            "Small (<10 kg)",
+            "Medium (10-25 kg)",
+            "Large (25-45 kg)",
+            "Giant (>45 kg)"
+          ]
+        },
+        "y": {
+          "field": "condition",
+          "type": "nominal",
+          "sort": [
+            "Dental Disease",
+            "Osteoarthritis",
+            "Obesity",
+            "Cancer/Neoplasia",
+            "Heart Disease",
+            "Hip Dysplasia",
+            "Brachycephalic Airway Syndrome",
+            "Renal Disease"
+          ]
+        },
+        "text": {
+          "field": "prevalence_label",
+          "type": "nominal"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.prevalence_pct > 30",
+            "value": "#ffffff"
+          },
+          "value": "#171311"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "transparent",
+    "view": {
+      "stroke": "transparent"
+    },
+    "font": "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif",
+    "axis": {
+      "domainColor": "#362f2c",
+      "gridColor": "rgba(230, 213, 194, 0.06)",
+      "tickColor": "#362f2c",
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "titleFontWeight": 600
+    },
+    "legend": {
+      "labelColor": "#96887a",
+      "titleColor": "#e6d5c2",
+      "labelFontSize": 10,
+      "titleFontSize": 11
+    },
+    "title": {
+      "color": "#f2e8dc",
+      "subtitleColor": "#96887a",
+      "fontSize": 16,
+      "fontWeight": 700,
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "offset": 12
+    }
+  }
+}

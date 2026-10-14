@@ -1,0 +1,369 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 750,
+  "height": 480,
+  "background": "transparent",
+  "resolve": {
+    "scale": {
+      "color": "independent",
+      "size": "independent"
+    }
+  },
+  "params": [
+    {
+      "name": "species_select",
+      "value": "All Transfers",
+      "bind": {
+        "input": "select",
+        "options": ["All Transfers", "Dogs / Pups", "Cats / Kittens"],
+        "name": "Transfer Cohort: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.5, -27.5],
+    "scale": 640
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "data/australia_states_named.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "austates"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#201b19",
+        "stroke": "#362f2c",
+        "strokeWidth": 1
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_shelter_transfers_2024_2025.csv"
+      },
+      "transform": [
+        {
+          "filter": "species_select === 'All Transfers' || datum.species === species_select"
+        }
+      ],
+      "params": [
+        {
+          "name": "route_hover",
+          "select": {
+            "type": "point",
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "rule",
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {
+          "field": "orig_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "orig_lat",
+          "type": "quantitative"
+        },
+        "longitude2": {
+          "field": "dest_lon"
+        },
+        "latitude2": {
+          "field": "dest_lat"
+        },
+        "strokeWidth": {
+          "field": "total_transferred",
+          "type": "quantitative",
+          "scale": {
+            "domain": [20, 250],
+            "range": [2, 6.5]
+          },
+          "legend": {
+            "title": "Annual Pet Transfers",
+            "orient": "bottom-left",
+            "fillColor": "rgba(23, 19, 17, 0.88)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#362f2c",
+            "titleColor": "#e6d5c2",
+            "labelColor": "#96887a",
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "color": {
+          "condition": {
+            "param": "route_hover",
+            "empty": false,
+            "value": "#5c9cb8"
+          },
+          "field": "species",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Dogs / Pups", "Cats / Kittens"],
+            "range": ["#fcba81", "#5c9cb8"]
+          },
+          "legend": {
+            "title": "Transfer Cohort",
+            "orient": "bottom-right",
+            "fillColor": "rgba(23, 19, 17, 0.88)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#362f2c",
+            "titleColor": "#e6d5c2",
+            "labelColor": "#96887a",
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "opacity": {
+          "condition": {
+            "param": "route_hover",
+            "empty": false,
+            "value": 1.0
+          },
+          "value": 0.7
+        },
+        "tooltip": [
+          {"field": "route_name", "type": "nominal", "title": "Rescue Route"},
+          {"field": "orig_hub", "type": "nominal", "title": "Origin Hub"},
+          {"field": "dest_hub", "type": "nominal", "title": "Destination Hub"},
+          {"field": "total_transferred", "type": "quantitative", "format": ",d", "title": "Total Transferred"},
+          {"field": "dogs_transferred", "type": "quantitative", "format": ",d", "title": "Dogs Transferred"},
+          {"field": "cats_transferred", "type": "quantitative", "format": ",d", "title": "Cats Transferred"},
+          {"field": "primary_reason", "type": "nominal", "title": "Operational Purpose"},
+          {"field": "transport_mode", "type": "nominal", "title": "Transport Mode"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_shelter_transfers_2024_2025.csv"
+      },
+      "transform": [
+        {
+          "filter": "species_select === 'All Transfers' || datum.species === species_select"
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "triangle",
+        "filled": true
+      },
+      "encoding": {
+        "longitude": {
+          "field": "arrow_lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "arrow_lat",
+          "type": "quantitative"
+        },
+        "angle": {
+          "field": "arrow_angle",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 360],
+            "range": [0, 360]
+          }
+        },
+        "size": {
+          "field": "total_transferred",
+          "type": "quantitative",
+          "scale": {
+            "domain": [20, 250],
+            "range": [80, 220]
+          },
+          "legend": null
+        },
+        "color": {
+          "condition": {
+            "param": "route_hover",
+            "empty": false,
+            "value": "#38bdf8"
+          },
+          "field": "species",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Dogs / Pups", "Cats / Kittens"],
+            "range": ["#f59e0b", "#06b6d4"]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "param": "route_hover",
+            "empty": false,
+            "value": 1.0
+          },
+          "value": 0.9
+        },
+        "tooltip": [
+          {"field": "route_name", "type": "nominal", "title": "Rescue Route"},
+          {"field": "orig_hub", "type": "nominal", "title": "Origin Hub"},
+          {"field": "dest_hub", "type": "nominal", "title": "Destination Hub"},
+          {"field": "total_transferred", "type": "quantitative", "format": ",d", "title": "Total Transferred"},
+          {"field": "dogs_transferred", "type": "quantitative", "format": ",d", "title": "Dogs Transferred"},
+          {"field": "cats_transferred", "type": "quantitative", "format": ",d", "title": "Cats Transferred"},
+          {"field": "primary_reason", "type": "nominal", "title": "Operational Purpose"},
+          {"field": "transport_mode", "type": "nominal", "title": "Transport Mode"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_transfer_hubs_2024_2025.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "stroke": "#171311",
+        "strokeWidth": 1.5,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "traffic_volume",
+          "type": "quantitative",
+          "scale": {
+            "domain": [20, 400],
+            "range": [60, 240]
+          },
+          "legend": null
+        },
+        "color": {
+          "field": "role",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Surplus Origin Shelter", "Adoption Destination Hub"],
+            "range": ["#ea9875", "#99af6b"]
+          },
+          "legend": {
+            "title": "Facility Role",
+            "orient": "top-left",
+            "labelLimit": 200,
+            "fillColor": "rgba(23, 19, 17, 0.88)",
+            "padding": 8,
+            "cornerRadius": 0,
+            "strokeColor": "#362f2c",
+            "titleColor": "#e6d5c2",
+            "labelColor": "#96887a",
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {"field": "hub_name", "type": "nominal", "title": "Facility Hub"},
+          {"field": "state", "type": "nominal", "title": "State / Territory"},
+          {"field": "role", "type": "nominal", "title": "Facility Role"},
+          {"field": "traffic_volume", "type": "quantitative", "format": ",d", "title": "Annual Transfer Volume"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_transfer_hubs_2024_2025.csv"
+      },
+      "transform": [
+        {"filter": "datum.align === 'left'"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#ffffff",
+        "align": "left",
+        "dx": 12,
+        "dy": 0
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "hub_name"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_transfer_hubs_2024_2025.csv"
+      },
+      "transform": [
+        {"filter": "datum.align === 'right'"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#ffffff",
+        "align": "right",
+        "dx": -12,
+        "dy": 0
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "hub_name"
+        }
+      }
+    },
+    {
+      "data": {
+        "url": "data/australia_transfer_hubs_2024_2025.csv"
+      },
+      "transform": [
+        {"filter": "datum.align === 'center'"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": 700,
+        "fill": "#ffffff",
+        "align": "center",
+        "dx": 0,
+        "dy": -14
+      },
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "hub_name"
+        }
+      }
+    }
+  ]
+}
