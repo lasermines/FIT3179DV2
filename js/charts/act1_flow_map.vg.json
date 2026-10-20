@@ -93,8 +93,8 @@
             "padding": 8,
             "cornerRadius": 0,
             "strokeColor": "#362f2c",
-            "titleColor": "#e6d5c2",
-            "labelColor": "#96887a",
+            "titleColor": "#f5ece1",
+            "labelColor": "#baa99b",
             "titleFontSize": 11,
             "labelFontSize": 10
           }
@@ -118,8 +118,8 @@
             "padding": 8,
             "cornerRadius": 0,
             "strokeColor": "#362f2c",
-            "titleColor": "#e6d5c2",
-            "labelColor": "#96887a",
+            "titleColor": "#f5ece1",
+            "labelColor": "#baa99b",
             "titleFontSize": 11,
             "labelFontSize": 10
           }
@@ -261,8 +261,8 @@
             "padding": 8,
             "cornerRadius": 0,
             "strokeColor": "#362f2c",
-            "titleColor": "#e6d5c2",
-            "labelColor": "#96887a",
+            "titleColor": "#f5ece1",
+            "labelColor": "#baa99b",
             "titleFontSize": 11,
             "labelFontSize": 10
           }

@@ -289,7 +289,7 @@
       </div>
 
       <p>
-        Managing chronic conditions and routine preventive care requires steady financial investment. Australian dog owners spend an average of <strong>$1,650 AUD annually</strong> on veterinary healthcare, with dental work and chronic medication forming the largest ongoing categories.
+        Australian dog owners spend an average of <strong>$1,650 AUD annually</strong> on veterinary healthcare. While owners often expect routine checkups and vaccines to be the main expense ($550, 33.3%), dental procedures ($480, 29.1%) and emergency care ($355, 21.5%) make up more than half of the total budget.
       </p>
 
       <!-- Chart 9: Vet spending treemap -->
@@ -297,7 +297,7 @@
         <div class="card-header">
           <span class="badge badge-blue">Treemap</span>
           <h3>9. Where Pet Healthcare Dollars Go: Annual Australian Veterinary Spend</h3>
-          <p class="subtitle">Dental care and chronic medications make up 43% of total veterinary costs, surpassing routine vaccinations.</p>
+          <p class="subtitle">Routine care ($550, 33.3%) and dental procedures ($480, 29.1%) account for over 62% of the $1,650 total annual veterinary spend.</p>
         </div>
 
         <div id="chart-act3-spending-treemap" class="chart"></div>
@@ -308,8 +308,8 @@
         </div>
 
         <div class="munzner-box">
-          <p><strong>What:</strong> Breakdown of annual veterinary expenditures across 5 main categories and 10 subcategories. Attributes: category, subcategory, and annual spend in AUD.</p>
-          <p><strong>Why:</strong> Illustrate where pet healthcare money actually goes, showing that ongoing chronic care outweighs routine vaccinations.</p>
+          <p><strong>What:</strong> Breakdown of the $1,650 average annual veterinary expenditure across 5 major categories and 11 subcategories: Routine Health ($550, 33.3%), Dental Procedures ($480, 29.1%), Emergency &amp; Surgery ($355, 21.5%), Medications ($145, 8.8%), and Diagnostics ($120, 7.3%).</p>
+          <p><strong>Why:</strong> Illustrate where pet healthcare money actually goes, showing that dental care and emergency surgery outweigh routine vaccinations.</p>
           <p><strong>How:</strong> Faceted nested horizontal tiles sized proportionally to dollar spend, grouped by category and colored by top-level expense type.</p>
         </div>
       </div>
@@ -353,8 +353,8 @@
       </div>
 
       <div class="callout callout-blue">
-        <div class="callout-title">&#9432; The Preventive Care Gap: 72% Vaccinate, but Only 28% Provide Dental Care</div>
-        While 72% of Australian pets receive regular vaccinations, <strong>only 28% receive professional annual dental scaling</strong>. Because periodontal bacteria enter the bloodstream and damage kidneys and heart valves, dental neglect is a major cause of preventable decline.
+        <div class="callout-title">&#9432; The Preventive Care Gap: Vaccination (32%) and Desexing (26%) Lead, While Dental Care Lags at 8%</div>
+        While routine vaccination (32%) and desexing (26%) make up the majority of preventive care habits, <strong>regular veterinary dental care accounts for only 8%</strong>. Periodontal bacteria can enter the bloodstream and damage kidneys and heart valves, making dental neglect a major cause of preventable health decline.
       </div>
 
       <!-- Chart 11: Preventive care waffle chart -->
@@ -362,7 +362,7 @@
         <div class="card-header">
           <span class="badge badge-blue">Waffle Chart</span>
           <h3>11. Preventive Care Adoption Across Australian Pet Owners</h3>
-          <p class="subtitle">While 72% of pets are vaccinated and 85% microchipped, only 28% receive regular preventive dental care.</p>
+          <p class="subtitle">Vaccination (32%) and desexing (26%) dominate preventive pet care, while dental care lags at just 8%.</p>
         </div>
 
         <div id="chart-act4-waffle" class="chart"></div>
@@ -373,9 +373,9 @@
         </div>
 
         <div class="munzner-box">
-          <p><strong>What:</strong> Adoption rates for 6 key preventive veterinary habits. Each unit square in the 10×10 grid represents 1% of Australian pets (~287,000 animals).</p>
-          <p><strong>Why:</strong> Expose gaps in preventive pet care: most owners vaccinate and microchip, but few provide dental care, leading to preventable organ disease.</p>
-          <p><strong>How:</strong> 10×10 grid of unit squares colored by habit category, with interactive hover highlighting and tooltips showing national adoption percentages.</p>
+          <p><strong>What:</strong> Adoption rates across 6 key preventive veterinary habits. Each unit square in the 10×10 grid represents 1% of Australian pets (~287,000 animals): Vaccination (32%), Desexing (26%), Microchipping (18%), Insurance (11%), Dental Care (8%), and Irregular/None (5%).</p>
+          <p><strong>Why:</strong> Highlight the contrast between high vaccination and desexing rates versus low dental care uptake, which contributes to chronic organ disease.</p>
+          <p><strong>How:</strong> 10×10 grid of unit squares grouped contiguously by habit category, with interactive hover highlighting and tooltips showing national adoption percentages.</p>
         </div>
       </div>
 
@@ -445,22 +445,22 @@
         view: { stroke: 'transparent' },
         axis: {
           domainColor: '#362f2c',
-          gridColor: 'rgba(230, 213, 194, 0.06)',
+          gridColor: 'rgba(230, 213, 194, 0.08)',
           tickColor: '#362f2c',
-          labelColor: '#96887a',
-          titleColor: '#e6d5c2',
+          labelColor: '#baa99b',
+          titleColor: '#f5ece1',
           labelFont: 'Inter, sans-serif',
           titleFont: 'Plus Jakarta Sans, sans-serif'
         },
         legend: {
-          labelColor: '#96887a',
-          titleColor: '#e6d5c2',
+          labelColor: '#baa99b',
+          titleColor: '#f5ece1',
           labelFont: 'Inter, sans-serif',
           titleFont: 'Plus Jakarta Sans, sans-serif'
         },
         title: {
-          color: '#f2e8dc',
-          subtitleColor: '#96887a',
+          color: '#fcf8f3',
+          subtitleColor: '#cdc1b4',
           font: 'Plus Jakarta Sans, sans-serif'
         }
       }

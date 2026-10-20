@@ -3,7 +3,14 @@
   "width": 460,
   "height": 460,
   "data": {
-    "url": "data/preventive_care_adoption_waffle.csv"
+    "url": "data/preventive_care_adoption_waffle.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "row": "number",
+        "col": "number"
+      }
+    }
   },
   "transform": [
     {
@@ -46,11 +53,17 @@
     "x": {
       "field": "col",
       "type": "ordinal",
+      "scale": {
+        "domain": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      },
       "axis": null
     },
     "y": {
       "field": "row",
       "type": "ordinal",
+      "scale": {
+        "domain": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      },
       "axis": null
     },
     "color": {
@@ -100,7 +113,7 @@
       "condition": {
         "param": "habit_hover",
         "empty": false,
-        "value": "#f2e8dc"
+        "value": "#fcf8f3"
       },
       "value": "#171311"
     },
@@ -140,21 +153,21 @@
       "domainColor": "#362f2c",
       "gridColor": "rgba(230, 213, 194, 0.06)",
       "tickColor": "#362f2c",
-      "labelColor": "#96887a",
-      "titleColor": "#e6d5c2",
+      "labelColor": "#baa99b",
+      "titleColor": "#f5ece1",
       "labelFontSize": 11,
       "titleFontSize": 12,
       "titleFontWeight": 600
     },
     "legend": {
-      "labelColor": "#96887a",
-      "titleColor": "#e6d5c2",
+      "labelColor": "#baa99b",
+      "titleColor": "#f5ece1",
       "labelFontSize": 10,
       "titleFontSize": 11
     },
     "title": {
-      "color": "#f2e8dc",
-      "subtitleColor": "#96887a",
+      "color": "#fcf8f3",
+      "subtitleColor": "#baa99b",
       "fontSize": 16,
       "fontWeight": 700,
       "subtitleFontSize": 12,
