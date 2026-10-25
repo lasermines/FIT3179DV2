@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Ranked lollipop chart showing top 10 longest-lived (emerald green) vs shortest-lived breeds",
   "width": 680,
   "height": 520,
   "data": {
